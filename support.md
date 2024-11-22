@@ -1,14 +1,33 @@
+<!-- Copyright 2024 ULTE, 2022 cqwrteur
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ -->
+# Support Platform
+
 ## Compiler Support
+
 - GCC >= 15
 - Clang >= 20
 - MSVC
 
 ## C++ standard library support
+
 - GCC libstdc++
 - LLVM libc++
 - MSVC STL
 
 ## Mainstream Architecture Support
+
 - i686
 - x86_64
 - arm
@@ -18,6 +37,7 @@
 - loongarch64
 
 ## Architecture Support
+
 - alpha
 - riscv (RISC-V is crap. Stop using it)
 - riscv64
@@ -31,6 +51,7 @@
 - All other architectures should work, they just aren't tested due to time not being infinite.
 
 ## Platform Support
+
 - Windows 10/12
 - Windows Server 2019
 - Windows on ARM
@@ -63,13 +84,16 @@
 - Any other platform (if you want me to support it, tell me, including your own OS)
 
 ## Kernel Driver Support
+
 - Windows NT kernel Driver
 - Linux kernel Module
 
 ## Legacy Windows Version Support
+
 **You need define `_WIN32_WINNT` and `_WIN32_WINDOWS` version by yourself.**
 
 On Windows 95 or 95 Plus! you can enable `-O3` but not `-Ofast`. You'll also need `msvcrt.dll`.
+
 - Windows 95
 - Windows 95 Plus!
 - Windows Nashville
@@ -97,6 +121,7 @@ On Windows 95 or 95 Plus! you can enable `-O3` but not `-Ofast`. You'll also nee
 - Windows 11. Windows 11 was a significant mistake.
 
 ## Legacy Windows Version Support with DJGPP toolchain
+
 - Windows 1.0
 - Windows 2.0
 - Windows 3.0
@@ -110,6 +135,7 @@ On Windows 95 or 95 Plus! you can enable `-O3` but not `-Ofast`. You'll also nee
 - Windows ME
 
 ## Supported libc FILE* hacks platforms
+
 - glibc
 - MSVCRT
 - Universal CRT
@@ -135,17 +161,20 @@ See wine bug [PR53960](https://gitlab.winehq.org/wine/wine/-/merge_requests/5752
 - LLVM libc (untested)
 
 ## Supported C++ standard library `std::streambuf`/`std::filebuf` hacks platforms
+
 - GCC libstdc++
 - LLVM libc++
 - MSVC STL
 
 ## Remote Debugger Support
+
 - WinDbg
 - Visual Studio Debugger
 - DbgViewer
 - Android ADB
 
 ## Special Support
+
 - LLVM Address Sanitizer
 - Full freestanding support (which means we do not have any headers besides freestanding headers. Tested with GCC's --disable-hosted-libstdcxx without any libc, including newlib)
 - Pintool support
