@@ -1,4 +1,5 @@
 #include <ufio.h>
+#include <ufio_device.h>
 #include <ufio_tools/install_path.h>
 
 int main(int argc, char**argv)
