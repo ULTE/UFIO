@@ -91,7 +91,16 @@ inline void sys_close_throw_error(int &fd)
 	system_call_throw_error(ret);
 }
 
-#if !(defined(_WIN32) && !defined(__BIONIC__))
+#if (!defined(__NEWLIB__) || defined(__CYGWIN__)) && !defined(_WIN32) && __has_include(<dirent.h>) && !defined(_PICOLIBC__)
+
+extern int my_fcntl(int fd, int cmd, ... /* arg */) noexcept
+#if !defined(__MSDOS__)
+	__asm__("fcntl")
+#else
+	__asm__("_fcntl")
+#endif
+		;
+
 template <typename T>
 inline int sys_fcntl(int fd, int op, T &&third_arg)
 {
@@ -100,7 +109,7 @@ inline int sys_fcntl(int fd, int op, T &&third_arg)
 	system_call_throw_error(result);
 	return result;
 #else
-	auto result{::ufio::noexcept_call(fcntl, fd, op, ::std::forward<T>(third_arg))};
+	auto result{my_fcntl(fd, op, ::std::forward<T>(third_arg))};
 #endif
 	if (result == -1)
 	{
@@ -115,7 +124,7 @@ inline int sys_fcntl(int fd, int op)
 	system_call_throw_error(result);
 	return result;
 #else
-	auto result{::ufio::noexcept_call(fcntl, fd, op)};
+	auto result{my_fcntl(fd, op)};
 #endif
 	if (result == -1)
 	{
