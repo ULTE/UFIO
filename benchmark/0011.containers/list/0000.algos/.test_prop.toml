@@ -1,2 +1,2 @@
-["fast_io.cc"] # unimplemented constructor
+["ufio.cc"] # unimplemented constructor
 ignore = true

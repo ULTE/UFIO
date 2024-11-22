@@ -1,13 +1,13 @@
 ﻿// haven't finished do not print out float
 // should compile with -fsanitize=address -fsanitize=undefined to verify code
-#include <fast_io.h>
-#include <fast_io_unit/floating.h>
+#include <ufio.h>
+#include <ufio_unit/floating.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	println(std::numeric_limits<float>::infinity(), "\n",
 			std::numeric_limits<float>::min(), "\n",
 			std::numeric_limits<float>::max(), "\n",

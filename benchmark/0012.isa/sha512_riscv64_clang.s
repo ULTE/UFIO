@@ -156,7 +156,7 @@ _Z14sha512_invokerPmPKSt4byteS2_:       # @_Z14sha512_invokerPmPKSt4byteS2_
 	ld	a0, %pcrel_lo(.Lpcrel_hi15)(a0)
 	sd	a0, 24(sp)                      # 8-byte Folded Spill
 .Lpcrel_hi16:
-	auipc	a0, %pcrel_hi(_ZN7fast_io7details6sha51210k512scalarE)
+	auipc	a0, %pcrel_hi(_ZN7ufio7details6sha51210k512scalarE)
 	addi	a0, a0, %pcrel_lo(.Lpcrel_hi16)
 	sd	a0, 248(sp)                     # 8-byte Folded Spill
 	addi	a0, a0, 64
@@ -2108,11 +2108,11 @@ _Z14sha512_invokerPmPKSt4byteS2_:       # @_Z14sha512_invokerPmPKSt4byteS2_
 	.size	_Z14sha512_invokerPmPKSt4byteS2_, .Lfunc_end0-_Z14sha512_invokerPmPKSt4byteS2_
 	.cfi_endproc
                                         # -- End function
-	.type	_ZN7fast_io7details6sha51210k512scalarE,@object # @_ZN7fast_io7details6sha51210k512scalarE
-	.section	.rodata._ZN7fast_io7details6sha51210k512scalarE,"aG",@progbits,_ZN7fast_io7details6sha51210k512scalarE,comdat
-	.weak	_ZN7fast_io7details6sha51210k512scalarE
+	.type	_ZN7ufio7details6sha51210k512scalarE,@object # @_ZN7ufio7details6sha51210k512scalarE
+	.section	.rodata._ZN7ufio7details6sha51210k512scalarE,"aG",@progbits,_ZN7ufio7details6sha51210k512scalarE,comdat
+	.weak	_ZN7ufio7details6sha51210k512scalarE
 	.p2align	3, 0x0
-_ZN7fast_io7details6sha51210k512scalarE:
+_ZN7ufio7details6sha51210k512scalarE:
 	.quad	-1973867731355612462            # 0xe49b69c19ef14ad2
 	.quad	-1171420211273849373            # 0xefbe4786384f25e3
 	.quad	1135362057144423861             # 0xfc19dc68b8cd5b5
@@ -2177,7 +2177,7 @@ _ZN7fast_io7details6sha51210k512scalarE:
 	.quad	6448918945643986474             # 0x597f299cfc657e2a
 	.quad	6902733635092675308             # 0x5fcb6fab3ad6faec
 	.quad	7801388544844847127             # 0x6c44198c4a475817
-	.size	_ZN7fast_io7details6sha51210k512scalarE, 512
+	.size	_ZN7ufio7details6sha51210k512scalarE, 512
 
 	.section	".linker-options","e",@llvm_linker_options
 	.ident	"clang version 20.0.0git (git@github.com:trcrsired/llvm-project.git 1ccbabd27406055793ca2fd73a6fd2f0d9474828)"

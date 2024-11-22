@@ -1,19 +1,19 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::net_service serivce;
-	fast_io::native_socket_file socket(fast_io::tcp_listen(2000));
-	fast_io::obuf_file null_device(u8"/dev/null");
-	fast_io::native_file logs(u8"log.txt", fast_io::open_mode::out);
-	for (fast_io::iobuf_socket_file soc;;)
+	ufio::net_service serivce;
+	ufio::native_socket_file socket(ufio::tcp_listen(2000));
+	ufio::obuf_file null_device(u8"/dev/null");
+	ufio::native_file logs(u8"log.txt", ufio::open_mode::out);
+	for (ufio::iobuf_socket_file soc;;)
 	{
 		try
 		{
-			soc.reopen(fast_io::tcp_accept(socket));
+			soc.reopen(ufio::tcp_accept(socket));
 			transmit64(null_device, soc, UINT64_MAX);
 			soc.close();
 		}

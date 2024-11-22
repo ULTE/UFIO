@@ -1,15 +1,15 @@
 ﻿#include <list>
-#include <fast_io_dsal/vector.h>
-#include <fast_io.h>
-#include <fast_io_driver/timer.h>
+#include <ufio_dsal/vector.h>
+#include <ufio.h>
+#include <ufio_driver/timer.h>
 #include <random>
 #include <algorithm>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	::fast_io::vector<::std::size_t> vec;
+	::ufio::vector<::std::size_t> vec;
 	constexpr
 		::std::size_t n{1000000};
 	vec.reserve(n);
@@ -17,13 +17,13 @@ int main()
 	{
 		vec.push_back_unchecked(i);
 	}
-	::fast_io::ibuf_white_hole_engine eng;
+	::ufio::ibuf_white_hole_engine eng;
 	::std::ranges::shuffle(vec,eng);
 
 	::std::list<::std::size_t> lst(vec.begin(),vec.end());
 	{
-		::fast_io::timer tm(u8"::std::list<T>::sort()");
+		::ufio::timer tm(u8"::std::list<T>::sort()");
 		lst.sort();
 	}
-	perrln("issorted?",::fast_io::mnp::boolalpha(::std::ranges::is_sorted(lst)));
+	perrln("issorted?",::ufio::mnp::boolalpha(::std::ranges::is_sorted(lst)));
 }

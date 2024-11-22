@@ -1,12 +1,12 @@
 ﻿#include <cstdint>
 #include <cstddef>
 #include "stivale2.h"
-#include "../../../include/fast_io.h"
-#include "../../../include/fast_io_driver/limine/kernel_console.h"
+#include "../../../include/ufio.h"
+#include "../../../include/ufio_driver/limine/kernel_console.h"
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
-namespace fast_io_kernel_demo
+namespace ufio_kernel_demo
 {
 // We need to tell the stivale bootloader where we want our stack to be.
 // We are going to allocate our stack as an uninitialised array in .bss.
@@ -116,12 +116,12 @@ void _start(struct stivale2_struct *stivale2_struct) noexcept
 	// Now, let's assign this pointer to a function pointer which
 	// matches the prototype described in the stivale2 specification for
 	// the stivale2_term_write function.
-	using function_ptr = fast_io::limine::u8kernel_console::function_ptr_type;
-	fast_io::limine::u8kernel_console console{__builtin_bit_cast(function_ptr, term.term_write)};
+	using function_ptr = ufio::limine::u8kernel_console::function_ptr_type;
+	ufio::limine::u8kernel_console console{__builtin_bit_cast(function_ptr, term.term_write)};
 
 	auto &epoch{stivale2_get<stivale2_struct_tag_epoch>(stivale2_struct, STIVALE2_STRUCT_TAG_EPOCH_ID)};
-	fast_io::unix_timestamp tsp{static_cast<std::int_least64_t>(epoch.epoch)};
-	println(console, u8"Hello fast_io Kernel: stivale2_struct address:", stivale2_struct,
+	ufio::unix_timestamp tsp{static_cast<std::int_least64_t>(epoch.epoch)};
+	println(console, u8"Hello ufio Kernel: stivale2_struct address:", stivale2_struct,
 			u8"\n"
 			u8"Unix Timestamp:",
 			tsp,
@@ -136,4 +136,4 @@ void _start(struct stivale2_struct *stivale2_struct) noexcept
 	}
 }
 
-} // namespace fast_io_kernel_demo
+} // namespace ufio_kernel_demo

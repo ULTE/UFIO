@@ -1,13 +1,13 @@
 ﻿#include <cassert>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 
 int main()
 {
-	fast_io::vector<int> const
+	ufio::vector<int> const
 		a{1, 2, 3},
 		b{1, 2, 3},
 		c{7, 8, 9, 10};

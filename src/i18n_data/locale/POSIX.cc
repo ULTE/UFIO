@@ -1,6 +1,6 @@
 ﻿#include"../localedef.h"
 
-namespace fast_io_i18n
+namespace ufio_i18n
 {
 namespace
 {

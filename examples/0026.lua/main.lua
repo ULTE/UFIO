@@ -5,7 +5,7 @@ end
 
 local wasi = dofile("wasilib.lua")
 --[[replace this with your wasi implementation. Just copy it from wasm2lua]]
-local module = dofile("hello_fast_io.lua")
+local module = dofile("hello_ufio.lua")
 
 module.imports.wasi_snapshot_preview1=wasi(module.memory)
 

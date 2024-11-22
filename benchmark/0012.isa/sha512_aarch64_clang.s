@@ -423,8 +423,8 @@ _Z14sha512_invokerPmPKSt4byteS2_:       // @_Z14sha512_invokerPmPKSt4byteS2_
 	and	x18, x10, x27
 	add	x16, x16, x11
 	eor	x25, x25, x2, ror #39
-	adrp	x27, _ZN7fast_io7details6sha51210k512scalarE+64
-	add	x27, x27, :lo12:_ZN7fast_io7details6sha51210k512scalarE+64
+	adrp	x27, _ZN7ufio7details6sha51210k512scalarE+64
+	add	x27, x27, :lo12:_ZN7ufio7details6sha51210k512scalarE+64
 	add	x9, x16, x9
 	eor	x16, x18, x0
 	add	x16, x25, x16
@@ -952,11 +952,11 @@ _Z14sha512_invokerPmPKSt4byteS2_:       // @_Z14sha512_invokerPmPKSt4byteS2_
 .Lfunc_end0:
 	.size	_Z14sha512_invokerPmPKSt4byteS2_, .Lfunc_end0-_Z14sha512_invokerPmPKSt4byteS2_
                                         // -- End function
-	.type	_ZN7fast_io7details6sha51210k512scalarE,@object // @_ZN7fast_io7details6sha51210k512scalarE
-	.section	.rodata._ZN7fast_io7details6sha51210k512scalarE,"aG",@progbits,_ZN7fast_io7details6sha51210k512scalarE,comdat
-	.weak	_ZN7fast_io7details6sha51210k512scalarE
+	.type	_ZN7ufio7details6sha51210k512scalarE,@object // @_ZN7ufio7details6sha51210k512scalarE
+	.section	.rodata._ZN7ufio7details6sha51210k512scalarE,"aG",@progbits,_ZN7ufio7details6sha51210k512scalarE,comdat
+	.weak	_ZN7ufio7details6sha51210k512scalarE
 	.p2align	3, 0x0
-_ZN7fast_io7details6sha51210k512scalarE:
+_ZN7ufio7details6sha51210k512scalarE:
 	.xword	-1973867731355612462            // 0xe49b69c19ef14ad2
 	.xword	-1171420211273849373            // 0xefbe4786384f25e3
 	.xword	1135362057144423861             // 0xfc19dc68b8cd5b5
@@ -1021,7 +1021,7 @@ _ZN7fast_io7details6sha51210k512scalarE:
 	.xword	6448918945643986474             // 0x597f299cfc657e2a
 	.xword	6902733635092675308             // 0x5fcb6fab3ad6faec
 	.xword	7801388544844847127             // 0x6c44198c4a475817
-	.size	_ZN7fast_io7details6sha51210k512scalarE, 512
+	.size	_ZN7ufio7details6sha51210k512scalarE, 512
 
 	.section	".linker-options","e",@llvm_linker_options
 	.ident	"clang version 20.0.0git (git@github.com:trcrsired/llvm-project.git 3b9afec33ad48c7b4ddfc51cf9e1b286ccf9ac5c)"

@@ -1,4 +1,4 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
 struct foo
 {
@@ -18,29 +18,29 @@ inline void write(foo, char8_t const *first, char8_t const *last)
 	{
 		val ^= *first;
 	}
-	println(fast_io::u8out(), diff, " ", val);
+	println(ufio::u8out(), diff, " ", val);
 }
 
 struct new_type
 {
 };
 
-inline constexpr std::size_t print_reserve_size(fast_io::io_reserve_type_t<char8_t, new_type>, new_type) noexcept
+inline constexpr std::size_t print_reserve_size(ufio::io_reserve_type_t<char8_t, new_type>, new_type) noexcept
 {
 	return 30;
 }
 
 template <std::random_access_iterator Iter>
-inline constexpr Iter print_reserve_define(fast_io::io_reserve_type_t<char8_t, new_type>, Iter iter, new_type) noexcept
+inline constexpr Iter print_reserve_define(ufio::io_reserve_type_t<char8_t, new_type>, Iter iter, new_type) noexcept
 {
 	*iter = u8'o';
 	++iter;
 	return iter;
 }
 
-static_assert(fast_io::dynamic_reserve_printable<char8_t, new_type>);
+static_assert(ufio::dynamic_reserve_printable<char8_t, new_type>);
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {

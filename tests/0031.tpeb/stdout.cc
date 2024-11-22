@@ -1,18 +1,18 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
 void test_nt_stdout()
 {
-	print(::fast_io::nt_stdout(), "Hello World from nt\n");
+	print(::ufio::nt_stdout(), "Hello World from nt\n");
 }
 
 void test_win32_stdout()
 {
-	print(::fast_io::win32_stdout(), "Hello World from win32\n");
+	print(::ufio::win32_stdout(), "Hello World from win32\n");
 }
 
 void test_posix_stdout()
 {
-	print(::fast_io::posix_stdout(), "Hello World from posix\n");
+	print(::ufio::posix_stdout(), "Hello World from posix\n");
 }
 
 int main()

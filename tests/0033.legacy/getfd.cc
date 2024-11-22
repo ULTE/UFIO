@@ -1,4 +1,4 @@
-﻿#include<fast_io_legacy.h>
+﻿#include<ufio_legacy.h>
 #ifdef __GLIBCXX__
 #include<ext/stdio_sync_filebuf.h>
 #include<ext/stdio_filebuf.h>
@@ -8,28 +8,28 @@
 
 int main()
 {
-	::fast_io::wfilebuf_file fb(u8"testgetfd.txt",::fast_io::open_mode::out);
+	::ufio::wfilebuf_file fb(u8"testgetfd.txt",::ufio::open_mode::out);
 
-	::fast_io::wstreambuf_io_observer smiob{fb.fb};
-	::fast_io::io::println(::fast_io::mnp::handlevw(static_cast<::fast_io::wposix_io_observer>(smiob).fd));
+	::ufio::wstreambuf_io_observer smiob{fb.fb};
+	::ufio::io::println(::ufio::mnp::handlevw(static_cast<::ufio::wposix_io_observer>(smiob).fd));
 
-	::fast_io::streambuf_io_observer siob{::std::cout.rdbuf()};
-	::fast_io::io::println(::fast_io::mnp::handlevw(static_cast<::fast_io::posix_io_observer>(siob).fd));
+	::ufio::streambuf_io_observer siob{::std::cout.rdbuf()};
+	::ufio::io::println(::ufio::mnp::handlevw(static_cast<::ufio::posix_io_observer>(siob).fd));
 
 	::std::ios::sync_with_stdio(false);
 	siob.fb=::std::cerr.rdbuf();
-	::fast_io::io::println(::fast_io::mnp::handlevw(static_cast<::fast_io::posix_io_observer>(siob).fd));
+	::ufio::io::println(::ufio::mnp::handlevw(static_cast<::ufio::posix_io_observer>(siob).fd));
 
 	::std::ios::sync_with_stdio(true);
 	siob.fb=::std::cin.rdbuf();
-	::fast_io::io::println(::fast_io::mnp::handlevw(static_cast<::fast_io::posix_io_observer>(siob).fd));
+	::ufio::io::println(::ufio::mnp::handlevw(static_cast<::ufio::posix_io_observer>(siob).fd));
 
-	using namespace ::fast_io::mnp;
+	using namespace ::ufio::mnp;
 	auto& coutrdbuf{*std::cout.rdbuf()};
 	auto& wcoutrdbuf{*std::wcout.rdbuf()};
 	auto& cinrdbuf{*std::cin.rdbuf()};
 	auto& wcinrdbuf{*std::wcin.rdbuf()};
-	::fast_io::io::println(
+	::ufio::io::println(
 		"char: ",os_c_str(typeid(coutrdbuf).name()),"\n"
 		"wchar_t: ",os_c_str(typeid(wcoutrdbuf).name()),"\n"
 		"char: ",os_c_str(typeid(cinrdbuf).name()),"\n"

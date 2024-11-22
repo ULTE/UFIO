@@ -1,5 +1,5 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
 int main(int argc, char **argv)
 {
@@ -9,9 +9,9 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		::fast_io::io::perr("Usage: ", ::fast_io::mnp::os_c_str(*argv), " <file>\n");
+		::ufio::io::perr("Usage: ", ::ufio::mnp::os_c_str(*argv), " <file>\n");
 		return 1;
 	}
-	::fast_io::posix_file_loader a{::fast_io::mnp::os_c_str(argv[1])};
-	::fast_io::io::print(a);
+	::ufio::posix_file_loader a{::ufio::mnp::os_c_str(argv[1])};
+	::ufio::io::print(a);
 }

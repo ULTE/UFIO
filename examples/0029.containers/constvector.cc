@@ -1,8 +1,8 @@
-﻿#include <fast_io_dsal/vector.h>
+﻿#include <ufio_dsal/vector.h>
 
 consteval auto test()
 {
-	return fast_io::vector{2, 3, 4}[2];
+	return ufio::vector{2, 3, 4}[2];
 }
 
 int main()

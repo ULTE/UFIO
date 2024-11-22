@@ -1,8 +1,8 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
 int main()
 {
-	fast_io::net_service service;
-	fast_io::native_socket_file socket(tcp_connect(fast_io::ipv4{{127, 0, 0, 1}, 2000}));
-	fast_io::operations::transmit_bytes_until_eof(fast_io::out(), socket);
+	ufio::net_service service;
+	ufio::native_socket_file socket(tcp_connect(ufio::ipv4{{127, 0, 0, 1}, 2000}));
+	ufio::operations::transmit_bytes_until_eof(ufio::out(), socket);
 }

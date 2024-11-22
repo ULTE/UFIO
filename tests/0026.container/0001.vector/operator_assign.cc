@@ -1,13 +1,13 @@
 ﻿#include <initializer_list>
 #include <iterator>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	fast_io::vector<int> x{1, 2, 3}, y, z;
+	ufio::vector<int> x{1, 2, 3}, y, z;
 	auto const w = {4, 5, 6, 7};
 
 	print("Initially:\n");

@@ -1,4 +1,4 @@
-﻿#include <fast_io_core.h>
+﻿#include <ufio_core.h>
 
 struct foo
 {
@@ -48,7 +48,7 @@ int main()
 		}
 		else
 		{
-			::fast_io::operations::char_put(f, '4');
+			::ufio::operations::char_put(f, '4');
 		}
 	}
 	else
@@ -61,14 +61,14 @@ int main()
 		}
 		else
 		{
-			::fast_io::operations::write_some(f, buffer,
+			::ufio::operations::write_some(f, buffer,
 											  buffer + 5);
 		}
 	}
 	char buffer[20] = "abcde\nf";
 	char buffer1[20] = "ppppp\nf";
 
-	::fast_io::io_scatter_t scat[2]{{buffer, 6}, {buffer1, 6}};
+	::ufio::io_scatter_t scat[2]{{buffer, 6}, {buffer1, 6}};
 
-	::fast_io::operations::scatter_write_all_bytes(f, scat, 2);
+	::ufio::operations::scatter_write_all_bytes(f, scat, 2);
 }

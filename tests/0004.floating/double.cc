@@ -1,11 +1,11 @@
 ﻿// should compile with -fsanitize=address -fsanitize=undefined to verify code
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	println(std::numeric_limits<double>::infinity(), "\n",
 			std::numeric_limits<double>::min(), "\n",
 			std::numeric_limits<double>::max(), "\n",

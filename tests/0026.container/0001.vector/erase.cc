@@ -1,16 +1,16 @@
-﻿#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+﻿#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
-void print_container(fast_io::vector<int> const &c)
+void print_container(ufio::vector<int> const &c)
 {
 	println(rgvw(c, " "));
 }
 
 int main()
 {
-	fast_io::vector<int> c{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	ufio::vector<int> c{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 	print_container(c);
 
 	c.erase(c.begin());
@@ -20,7 +20,7 @@ int main()
 	print_container(c);
 
 	// Erase all even numbers
-	for (fast_io::vector<int>::iterator it = c.begin(); it != c.end();)
+	for (ufio::vector<int>::iterator it = c.begin(); it != c.end();)
 	{
 		if (*it % 2 == 0)
 		{

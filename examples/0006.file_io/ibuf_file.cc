@@ -1,7 +1,7 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
@@ -11,9 +11,9 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		perr("Usage: ", fast_io::mnp::os_c_str(*argv), " <file>\n");
+		perr("Usage: ", ufio::mnp::os_c_str(*argv), " <file>\n");
 		return 1;
 	}
-	fast_io::ibuf_file ibf(fast_io::mnp::os_c_str(argv[1]));
-	transmit(fast_io::c_stdout(), ibf); // Transmit all bytes to FILE* stdout
+	ufio::ibuf_file ibf(ufio::mnp::os_c_str(argv[1]));
+	transmit(ufio::c_stdout(), ibf); // Transmit all bytes to FILE* stdout
 }

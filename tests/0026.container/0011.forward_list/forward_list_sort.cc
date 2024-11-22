@@ -1,30 +1,30 @@
-﻿#include <fast_io_dsal/forward_list.h>
-#include <fast_io_dsal/vector.h>
-#include <fast_io.h>
+﻿#include <ufio_dsal/forward_list.h>
+#include <ufio_dsal/vector.h>
+#include <ufio.h>
 #include <random>
 #include <algorithm>
 
 int main()
 {
-	::fast_io::vector<::std::size_t> vec;
+	::ufio::vector<::std::size_t> vec;
 	constexpr ::std::size_t n{10};
 	vec.reserve(n);
 	for (::std::size_t i{}; i != n; ++i)
 	{
 		vec.push_back_unchecked(i);
 	}
-	::fast_io::ibuf_white_hole_engine eng;
+	::ufio::ibuf_white_hole_engine eng;
 	::std::ranges::shuffle(vec, eng);
 
 #if 0
 //UNFINISHED
-	::fast_io::forward_list<::std::size_t> flst(::fast_io::freestanding::from_range, vec);
+	::ufio::forward_list<::std::size_t> flst(::ufio::freestanding::from_range, vec);
 #if 0
 	flst.sort();
 #endif
-	::fast_io::forward_list<::std::size_t> flst2{1, 3, 5, 7, 9};
-	::fast_io::io::println("flst:\n", ::fast_io::mnp::rgvw(flst, "\n"), "\nflst2:\n", ::fast_io::mnp::rgvw(flst2, "\n"));
+	::ufio::forward_list<::std::size_t> flst2{1, 3, 5, 7, 9};
+	::ufio::io::println("flst:\n", ::ufio::mnp::rgvw(flst, "\n"), "\nflst2:\n", ::ufio::mnp::rgvw(flst2, "\n"));
 	flst2.reverse();
-	::fast_io::io::println("flst2:\n", ::fast_io::mnp::rgvw(flst2, "\n"));
+	::ufio::io::println("flst2:\n", ::ufio::mnp::rgvw(flst2, "\n"));
 #endif
 }

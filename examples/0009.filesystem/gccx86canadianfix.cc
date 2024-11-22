@@ -1,10 +1,10 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 #include <string_view>
 #include <algorithm>
 #include <functional>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		perr("Usage:", fast_io::mnp::os_c_str(*argv), " <gcc source directory>\n");
+		perr("Usage:", ufio::mnp::os_c_str(*argv), " <gcc source directory>\n");
 		return 1;
 	}
 	using namespace ::std::string_view_literals;
@@ -69,10 +69,10 @@ int main(int argc, char **argv)
     shlibpath_overrides_runpath=yes)abc"sv);
 	::std::boyer_moore_horspool_searcher searcher(reinterpret_cast<char const *>(vw.data()),
 												  reinterpret_cast<char const *>(vw.data()) + vw.size());
-	fast_io::dir_file df(fast_io::mnp::os_c_str(argv[1]));
+	ufio::dir_file df(ufio::mnp::os_c_str(argv[1]));
 	for (auto ent : recursive(at(df)))
 	{
-		if (type(ent) != fast_io::file_type::regular)
+		if (type(ent) != ufio::file_type::regular)
 		{
 			continue;
 		}
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 		if (fnm_view == u8"configure"sv || fnm_view == u8"libtool.m4"sv)
 		{
 			{
-				fast_io::native_file_loader loader(drt(ent));
+				ufio::native_file_loader loader(drt(ent));
 				auto bg{loader.data()};
 				auto ed{loader.data() + loader.size()};
 				auto it{std::search(bg, ed, searcher)};
@@ -89,17 +89,17 @@ int main(int argc, char **argv)
 					continue;
 				}
 			}
-			fast_io::allocation_file_loader loader(drt(ent));
-			fast_io::obuf_file obf(drt(ent));
+			ufio::allocation_file_loader loader(drt(ent));
+			ufio::obuf_file obf(drt(ent));
 			for (auto it{loader.data()}, ed{it + loader.size()};;)
 			{
 				auto retit{std::search(it, ed, searcher)};
-				::fast_io::operations::write_all(obf, it, retit);
+				::ufio::operations::write_all(obf, it, retit);
 				if (retit == ed)
 				{
 					break;
 				}
-				::fast_io::operations::write_all_bytes(
+				::ufio::operations::write_all_bytes(
 					obf, reinterpret_cast<::std::byte const *>(newvw.data()),
 					reinterpret_cast<::std::byte const *>(newvw.data() + newvw.size()));
 				it = retit + vw.size();

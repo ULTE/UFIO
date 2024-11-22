@@ -1,17 +1,17 @@
 ﻿#include <string>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
-	println(fast_io::concatln_std(middle(hex0x(42), 8, '-'), "\t", addrvw(42)), middle(hex0xupper(42), 8, '-'), "\t",
+	using namespace ufio::mnp;
+	println(ufio::concatln_std(middle(hex0x(42), 8, '-'), "\t", addrvw(42)), middle(hex0xupper(42), 8, '-'), "\t",
 			addrvw(42), "\n", middle(base<36, true>(42), 11, '-'));
 }
 
 /*
-D:\hg\fast_io\examples\0003.manipulators>g++ -v
+D:\hg\ufio\examples\0003.manipulators>g++ -v
 Using built-in specs.
 COLLECT_GCC=g++
 COLLECT_LTO_WRAPPER=d:/x86_64-windows-gnu/x86_64-w64-mingw32/bin/../libexec/gcc/x86_64-w64-mingw32/13.0.0/lto-wrapper.exe
@@ -23,10 +23,10 @@ Configured with: ../../../../gcc/configure --disable-nls --disable-werror --targ
 --host=x86_64-w64-mingw32 Thread model: win32 Supported LTO compression algorithms: zlib gcc version 13.0.0 20220703
 (experimental) (GCC)
 
-D:\hg\fast_io\examples\0003.manipulators>g++ -o 0x2a_0x 0x2a_0x.cc -Ofast -std=c++23 -s -flto -march=native
+D:\hg\ufio\examples\0003.manipulators>g++ -o 0x2a_0x 0x2a_0x.cc -Ofast -std=c++23 -s -flto -march=native
 -I../../include -Wall -Wextra
 
-D:\hg\fast_io\examples\0003.manipulators>0x2a_0x
+D:\hg\ufio\examples\0003.manipulators>0x2a_0x
 --0x2a--        0x0000002a
 --0X2A--        0x0000002a
 --0[36]16--

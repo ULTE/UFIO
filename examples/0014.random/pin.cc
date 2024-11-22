@@ -1,18 +1,18 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 #include <random>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
 	std::size_t n{100};
 	if (1 < argc)
 	{
-		n = fast_io::to<std::size_t>(fast_io::mnp::os_c_str(argv[1]));
+		n = ufio::to<std::size_t>(ufio::mnp::os_c_str(argv[1]));
 	}
-	fast_io::u8obuf_file obf(u"pin.txt");
-	fast_io::ibuf_white_hole_engine eng;
+	ufio::u8obuf_file obf(u"pin.txt");
+	ufio::ibuf_white_hole_engine eng;
 	std::uniform_int_distribution<unsigned> ud(0, 9);
 	for (std::size_t i{}; i != n; ++i)
 	{
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 		{
 			char8_t ch(static_cast<char8_t>(ud(eng)));
 			ch += u8'0';
-			print(obf, fast_io::mnp::chvw(ch));
+			print(obf, ufio::mnp::chvw(ch));
 		}
 		println(obf);
 	}

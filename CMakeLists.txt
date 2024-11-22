@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(fast_io C CXX)
+project(ufio C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -12,7 +12,7 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/man DESTINATION ${CMAKE_INSTALL_MANDIR}/ma
 option(BUILD_I18N_DLLS "build i18n runtime dlls" OFF)
 
 if(BUILD_I18N_DLLS)
-set(CMAKE_SHARED_MODULE_PREFIX "fast_io_i18n.locale.")
+set(CMAKE_SHARED_MODULE_PREFIX "ufio_i18n.locale.")
 file(GLOB localefiles ${CMAKE_SOURCE_DIR}/src/i18n_data/locale/*.cc)
 
 include(CheckCXXCompilerFlag)
@@ -51,11 +51,11 @@ if(COMPILER_SUPPORT_EXECUTION_CHARSET_${encoding})
 				target_compile_options(${purfilename}.${encoding} PRIVATE ${compilerencodingtoggle})
 			endif()
 			target_compile_definitions(${purfilename}.${encoding} PUBLIC
-				FAST_IO_LOCALE_ENCODING="${encoding}"
-				FAST_IO_LOCALE_LENCODING=L"${encoding}"
-				FAST_IO_LOCALE_u8ENCODING=u8"${encoding}"
-				FAST_IO_LOCALE_uENCODING=u"${encoding}"
-				FAST_IO_LOCALE_UENCODING=U"${encoding}")
+				UFIO_LOCALE_ENCODING="${encoding}"
+				UFIO_LOCALE_LENCODING=L"${encoding}"
+				UFIO_LOCALE_u8ENCODING=u8"${encoding}"
+				UFIO_LOCALE_uENCODING=u"${encoding}"
+				UFIO_LOCALE_UENCODING=U"${encoding}")
 			install(TARGETS ${purfilename}.${encoding}
 				LIBRARY DESTINATION ${I18N_INSTALL_DIR})
 		endforeach()
@@ -70,11 +70,11 @@ if(COMPILER_SUPPORT_EXECUTION_CHARSET_${encoding})
 				target_compile_options(${purfilename}.${encoding} PRIVATE ${compilerencodingtoggle})
 			endif()
 			target_compile_definitions(${purfilename}.${encoding} PUBLIC
-				FAST_IO_LOCALE_ENCODING="${encoding}"
-				FAST_IO_LOCALE_LENCODING=L"${encoding}"
-				FAST_IO_LOCALE_u8ENCODING=u8"${encoding}"
-				FAST_IO_LOCALE_uENCODING=u"${encoding}"
-				FAST_IO_LOCALE_UENCODING=U"${encoding}")
+				UFIO_LOCALE_ENCODING="${encoding}"
+				UFIO_LOCALE_LENCODING=L"${encoding}"
+				UFIO_LOCALE_u8ENCODING=u8"${encoding}"
+				UFIO_LOCALE_uENCODING=u"${encoding}"
+				UFIO_LOCALE_UENCODING=U"${encoding}")
 			install(TARGETS ${purfilename}.${encoding}
 				LIBRARY DESTINATION ${I18N_INSTALL_DIR})
 		endforeach()

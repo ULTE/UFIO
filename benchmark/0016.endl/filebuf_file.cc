@@ -1,13 +1,13 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_legacy.h>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_legacy.h>
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::timer tm(u8"u8filebuf_file");
-	fast_io::filebuf_file fbf(u8"filebuf_file.txt", fast_io::open_mode::out);
+	ufio::timer tm(u8"u8filebuf_file");
+	ufio::filebuf_file fbf(u8"filebuf_file.txt", ufio::open_mode::out);
 	for (std::size_t i{}; i != 10000000; ++i)
 	{
 		print(fbf, "Hello World\n");

@@ -1,6 +1,6 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char const **argv)
 {
@@ -10,18 +10,18 @@ int main(int argc, char const **argv)
 		{
 			return 1;
 		}
-		perr("Usage: ", ::fast_io::mnp::os_c_str(*argv), " <domain>\n");
+		perr("Usage: ", ::ufio::mnp::os_c_str(*argv), " <domain>\n");
 		return 1;
 	}
-	fast_io::net_service service;
-	fast_io::native_dns_file dnsfile;
+	ufio::net_service service;
+	ufio::native_dns_file dnsfile;
 	try
 	{
-		dnsfile = fast_io::native_dns_file(::fast_io::mnp::os_c_str(argv[1]));
+		dnsfile = ufio::native_dns_file(::ufio::mnp::os_c_str(argv[1]));
 	}
-	catch (::fast_io::error e)
+	catch (::ufio::error e)
 	{
-		::fast_io::io::perrln(e);
+		::ufio::io::perrln(e);
 		return -1;
 	}
 	for (auto ent : dnsfile)

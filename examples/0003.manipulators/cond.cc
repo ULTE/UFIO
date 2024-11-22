@@ -1,8 +1,8 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	println(fast_io::mnp::cond(true, "hello", "world"), "\n", fast_io::mnp::cond(false, "hello", "world"));
+	println(ufio::mnp::cond(true, "hello", "world"), "\n", ufio::mnp::cond(false, "hello", "world"));
 }

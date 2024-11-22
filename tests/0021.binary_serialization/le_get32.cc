@@ -1,9 +1,9 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
 	std::uint_least32_t u;
-	scan(fast_io::mnp::le_get<32>(u));
+	scan(ufio::mnp::le_get<32>(u));
 }

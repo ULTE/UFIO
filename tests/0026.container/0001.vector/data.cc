@@ -1,9 +1,9 @@
 ﻿#include <cstddef>
 #include <span>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 void pointer_func(int const *p, std::size_t size)
 {
@@ -22,7 +22,7 @@ void span_func(std::span<int const> data) // since C++20
 
 int main()
 {
-	fast_io::vector<int> container{1, 2, 3, 4};
+	ufio::vector<int> container{1, 2, 3, 4};
 
 	// Prefer container.data() over &container[0]
 	pointer_func(container.data(), container.size());

@@ -1,9 +1,9 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 #include <random>
 #include <cfloat>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 int main()
 {
@@ -17,8 +17,8 @@ int main()
 		vec.emplace_back(dis(eng));
 	}
 	{
-		fast_io::timer t(u8"decimal float");
-		fast_io::u8obuf_file file(u8"decimal_float.txt");
+		ufio::timer t(u8"decimal float");
+		ufio::u8obuf_file file(u8"decimal_float.txt");
 		for (auto const &e : vec)
 		{
 			println(file, e);

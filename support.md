@@ -58,7 +58,7 @@
 - LLVM `raw_fd_ostream`
 - Windows Kernel Driver
 - Linux Kernel Module
-- wasm2lua (Compile fast_io to Lua!)
+- wasm2lua (Compile ufio to Lua!)
 - Intel PinTool (Dynamic Instrumentation)
 - Any other platform (if you want me to support it, tell me, including your own OS)
 

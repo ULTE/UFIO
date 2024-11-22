@@ -1,4 +1,4 @@
-﻿#include <fast_io_legacy.h>
+﻿#include <ufio_legacy.h>
 #include "fileno.hpp"
 
 /*
@@ -11,8 +11,8 @@ namespace
 template <typename charT, typename traits>
 inline int fileno_hack(std::basic_ios<charT, traits> const &stream) noexcept
 {
-	::fast_io::basic_streambuf_io_observer<charT, traits> bsiob{stream.rdbuf()};
-	return static_cast<::fast_io::basic_posix_io_observer<charT>>(bsiob).fd;
+	::ufio::basic_streambuf_io_observer<charT, traits> bsiob{stream.rdbuf()};
+	return static_cast<::ufio::basic_posix_io_observer<charT>>(bsiob).fd;
 }
 } // namespace
 

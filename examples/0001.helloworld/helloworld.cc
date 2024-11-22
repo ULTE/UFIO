@@ -1,9 +1,9 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-// Basic functions like print and scan are in namespace fast_io::io
+// Basic functions like print and scan are in namespace ufio::io
 // The namespace is introduced to avoid conflict with std::print
 // It's encouraged to directly be 'using'
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {

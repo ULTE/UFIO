@@ -1,16 +1,16 @@
 ﻿#include <algorithm>
 #include <numeric>
 #include <string>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	fast_io::vector<int> nums{1, 2, 4, 8, 16};
-	fast_io::vector<std::string> fruits{"orange", "apple", "raspberry"};
-	fast_io::vector<char> empty;
+	ufio::vector<int> nums{1, 2, 4, 8, 16};
+	ufio::vector<std::string> fruits{"orange", "apple", "raspberry"};
+	ufio::vector<char> empty;
 
 	// Print vector.
 	std::for_each(nums.begin(), nums.end(), [](int const n) { print(n, " "); });

@@ -2,8 +2,8 @@
 Referenced from:
 https://blog.csdn.net/pi9nc/article/details/11978989
 */
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 #include <vector>
 #include <stack>
 
@@ -67,14 +67,14 @@ struct gabow_ctx
 	}
 };
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
 	gabow_ctx ctx;
 	std::size_t n;
 	{
-		fast_io::u8ibuf_file ibf(u8"directed_graph.txt");
+		ufio::u8ibuf_file ibf(u8"directed_graph.txt");
 		std::size_t m;
 		scan(ibf, m, n);
 		auto &graph{ctx.graph};
@@ -92,7 +92,7 @@ int main()
 		}
 	}
 	ctx.run();
-	fast_io::u8obuf_file obf(u8"gabow.txt");
+	ufio::u8obuf_file obf(u8"gabow.txt");
 	auto &component_graph{ctx.component_graph};
 	for (std::size_t i{}, sz{component_graph.size()}; i != sz; ++i)
 	{

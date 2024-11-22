@@ -1,8 +1,8 @@
 ﻿#include <string>
-#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
-#include <fast_io_dsal/vector.h>
+#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
+#include <ufio_dsal/vector.h>
 #include <format>
 #include <fstream>
 
@@ -10,7 +10,7 @@ int main()
 {
 	constexpr std::size_t N(10000000);
 	{
-		fast_io::timer t(u8"output");
+		ufio::timer t(u8"output");
 		std::ofstream fout("fstream_std_format.txt");
 		for (std::size_t i{}; i != N; ++i)
 		{

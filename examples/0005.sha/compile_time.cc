@@ -1,42 +1,42 @@
 ﻿#include <array>
 #include <string_view>
-#include <fast_io.h>
-#include <fast_io_crypto.h>
+#include <ufio.h>
+#include <ufio_crypto.h>
 
 constexpr auto evaluate_sha512() noexcept
 {
-	using fast_io::mnp::hash_digest;
+	using ufio::mnp::hash_digest;
 	std::array<char8_t,
-			   print_reserve_size(fast_io::io_reserve_type<char8_t, decltype(hash_digest(fast_io::sha512_context{}))>)>
+			   print_reserve_size(ufio::io_reserve_type<char8_t, decltype(hash_digest(ufio::sha512_context{}))>)>
 		array{};
-	fast_io::sha512_context ctx;
+	ufio::sha512_context ctx;
 	ctx.do_final();
-	print_reserve_define(fast_io::io_reserve_type<char8_t, decltype(hash_digest(fast_io::sha512_context{}))>,
+	print_reserve_define(ufio::io_reserve_type<char8_t, decltype(hash_digest(ufio::sha512_context{}))>,
 						 array.data(), hash_digest(ctx));
 	return array;
 }
 
 // constexpr auto evaluate_hmac_sha256() noexcept
 //{
-//	using T = fast_io::hmac_sha256;
-//	std::array<char8_t,print_reserve_size(fast_io::io_reserve_type<char8_t,T>)> array{};
+//	using T = ufio::hmac_sha256;
+//	std::array<char8_t,print_reserve_size(ufio::io_reserve_type<char8_t,T>)> array{};
 //	T sha("key");
-//	fast_io::hash_processor processor{sha};
+//	ufio::hash_processor processor{sha};
 //	print_freestanding(processor,"The quick brown fox jumps over the lazy dog");
 //	processor.do_final();
-//	print_reserve_define(fast_io::io_reserve_type<char8_t,T>,array.data(),sha);
+//	print_reserve_define(ufio::io_reserve_type<char8_t,T>,array.data(),sha);
 //	return array;
 // }
 
 // constexpr auto evaluate_hmac_sha512() noexcept
 //{
-//	using T = fast_io::hmac_sha512;
-//	std::array<char8_t,print_reserve_size(fast_io::io_reserve_type<char8_t,T>)> array{};
+//	using T = ufio::hmac_sha512;
+//	std::array<char8_t,print_reserve_size(ufio::io_reserve_type<char8_t,T>)> array{};
 //	T sha("key");
-//	fast_io::hash_processor processor{sha};
+//	ufio::hash_processor processor{sha};
 //	print_freestanding(processor,"The quick brown fox jumps over the lazy dog");
 //	processor.do_final();
-//	print_reserve_define(fast_io::io_reserve_type<char8_t,T>,array.data(),sha);
+//	print_reserve_define(ufio::io_reserve_type<char8_t,T>,array.data(),sha);
 //	return array;
 // }
 

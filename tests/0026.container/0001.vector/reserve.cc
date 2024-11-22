@@ -1,9 +1,9 @@
 ﻿#include <cstddef>
 #include <new>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 // minimal allocator with debug output
 struct NAlloc
@@ -28,7 +28,7 @@ int main()
 
 	print("using reserve: \n");
 	{
-		fast_io::vector<int, NAlloc> v1;
+		ufio::vector<int, NAlloc> v1;
 		v1.reserve(max_elements); // reserves at least max_elements * sizeof(int) bytes
 
 		for (int n = 0; n < max_elements; ++n)
@@ -39,7 +39,7 @@ int main()
 
 	print("not using reserve: \n");
 	{
-		fast_io::vector<int, NAlloc> v1;
+		ufio::vector<int, NAlloc> v1;
 
 		for (int n = 0; n < max_elements; ++n)
 		{

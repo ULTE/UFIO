@@ -1,16 +1,16 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
-#include <fast_io_driver/qt.h>
-using namespace fast_io::io;
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
+#include <ufio_driver/qt.h>
+using namespace ufio::io;
 
 int main()
 {
 	std::size_t spaces{};
 	{
-		fast_io::timer t(u8"input");
-		fast_io::u8ibuf_file ibf(u8"ibuf_white_hole_engine.txt");
-		for (QString qstr; scan<true>(ibf, fast_io::mnp::strlike_get(qstr)); ++spaces)
+		ufio::timer t(u8"input");
+		ufio::u8ibuf_file ibf(u8"ibuf_white_hole_engine.txt");
+		for (QString qstr; scan<true>(ibf, ufio::mnp::strlike_get(qstr)); ++spaces)
 		{
 		}
 	}

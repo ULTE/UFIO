@@ -1,13 +1,13 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 #include <random>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::timer tm(u8"mt19937_64");
-	fast_io::u8obuf_file obf(u8"mt19937_64.txt");
+	ufio::timer tm(u8"mt19937_64");
+	ufio::u8obuf_file obf(u8"mt19937_64.txt");
 	std::mt19937_64 eng; // just use this as a comparison even it is deterministic
 	std::uniform_int_distribution<std::size_t> ud(0, 61);
 	std::uniform_int_distribution<std::size_t> rlen(8, 20);
@@ -28,7 +28,7 @@ int main()
 			{
 				ch = ch - 36u + u8'A';
 			}
-			print(obf, fast_io::mnp::chvw(ch));
+			print(obf, ufio::mnp::chvw(ch));
 		}
 		println(obf);
 	}

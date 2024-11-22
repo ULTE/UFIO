@@ -2,14 +2,14 @@
  * Usage:
  *     ./list_files [directory]
  */
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	auto dname = os_c_str(".");
 	if (argc > 1)
 	{
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	}
 	try
 	{
-		fast_io::dir_file df(dname);
+		ufio::dir_file df(dname);
 		for (auto const &ent : current(at(df)))
 		{
 			if (is_dot(ent)) // ignore . and ..
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 			}
 			switch (type(ent))
 			{
-				using enum ::fast_io::file_type;
+				using enum ::ufio::file_type;
 			case directory:
 				print("D: ");
 				break;
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 			println(code_cvt(u8filename(ent)));
 		}
 	}
-	catch (fast_io::error &e)
+	catch (ufio::error &e)
 	{
 		perr("Fatal error: ", e);
 		return 1;

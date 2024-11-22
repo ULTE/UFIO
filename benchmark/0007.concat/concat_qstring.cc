@@ -1,19 +1,19 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/qt.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/qt.h>
 #include <vector>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 int main()
 {
 	constexpr std::size_t N(10000000);
 	{
-		fast_io::timer t(u8"concat_qstring");
-		fast_io::obuf_file obf("concat_qstring.txt");
+		ufio::timer t(u8"concat_qstring");
+		ufio::obuf_file obf("concat_qstring.txt");
 		for (std::size_t i{}; i != N; ++i)
 		{
-			print(obf, fast_io::u16concatln_qt_qstring(i));
+			print(obf, ufio::u16concatln_qt_qstring(i));
 		}
 	}
 }

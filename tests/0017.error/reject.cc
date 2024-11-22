@@ -1,7 +1,7 @@
 ﻿#include <cstdio>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {

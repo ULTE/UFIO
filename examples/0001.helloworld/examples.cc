@@ -1,7 +1,7 @@
 ﻿#include <string>
-#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_dsal/string.h>
+#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_dsal/string.h>
 
 using namespace ::std::string_literals;
 
@@ -12,29 +12,29 @@ struct point
 };
 
 template <typename char_type, typename output>
-void print_define(::fast_io::io_reserve_type_t<char_type, point>, output out, point const &p)
+void print_define(::ufio::io_reserve_type_t<char_type, point>, output out, point const &p)
 {
 	if constexpr (::std::is_same_v<char_type, char>)
 	{
-		::fast_io::println(out, "(", p.x, ",", p.y, ")");
+		::ufio::println(out, "(", p.x, ",", p.y, ")");
 	}
 }
 
 int main()
 {
-	::fast_io::println("Hello world!");
-	::fast_io::string str{"string"};
-	::fast_io::println(str);
-	::fast_io::println(::fast_io::mnp::os_c_str(str.data()));
-	::fast_io::println(::fast_io::mnp::pointervw(&str));
-	::fast_io::println(::fast_io::mnp::rgvw(str, ","));
-	::fast_io::println(::fast_io::mnp::chvw('c'));
-	::fast_io::println('c'); // output : 99
-	::fast_io::println(point{2, 5});
+	::ufio::println("Hello world!");
+	::ufio::string str{"string"};
+	::ufio::println(str);
+	::ufio::println(::ufio::mnp::os_c_str(str.data()));
+	::ufio::println(::ufio::mnp::pointervw(&str));
+	::ufio::println(::ufio::mnp::rgvw(str, ","));
+	::ufio::println(::ufio::mnp::chvw('c'));
+	::ufio::println('c'); // output : 99
+	::ufio::println(point{2, 5});
 
 	::std::string s;
-	::fast_io::scan(::fast_io::mnp::line_get(s));
-	::fast_io::println(s);
+	::ufio::scan(::ufio::mnp::line_get(s));
+	::ufio::println(s);
 
 	return 0;
 }

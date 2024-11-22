@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::posix_tzset();
-	fast_io::unix_timestamp tsp{fast_io::posix_clock_gettime(fast_io::posix_clock_id::realtime)};
+	ufio::posix_tzset();
+	ufio::unix_timestamp tsp{ufio::posix_clock_gettime(ufio::posix_clock_id::realtime)};
 	println("Unix Timestamp:", tsp,
 			"\n"
 			"utc:",
@@ -15,5 +15,5 @@ int main()
 			local(tsp),
 			"\n"
 			"timezone:",
-			fast_io::timezone_name());
+			ufio::timezone_name());
 }

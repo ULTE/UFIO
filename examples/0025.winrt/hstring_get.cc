@@ -1,11 +1,11 @@
 ﻿#include <winrt/base.h>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
 	winrt::hstring hstr;
-	scan(fast_io::mnp::strlike_get(hstr));
+	scan(ufio::mnp::strlike_get(hstr));
 	println(hstr);
 }

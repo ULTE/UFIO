@@ -1,10 +1,10 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	print(fast_io::out(), "Hello World\n");
+	print(ufio::out(), "Hello World\n");
 }
 /*
 This outputs to file descriptor 1 on non-windows systems. STDOUT_HANDLE on windows or Wine or ReactOS.

@@ -1,11 +1,11 @@
 ﻿#include <string>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	std::string str = fast_io::concat_std("The "
+	std::string str = ufio::concat_std("The "
 										  "fart is ",
 										  3,
 										  " years old.\n"

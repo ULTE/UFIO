@@ -1,10 +1,10 @@
-﻿#include <fast_io_dsal/string_view.h>
-#include <fast_io.h>
+﻿#include <ufio_dsal/string_view.h>
+#include <ufio.h>
 
 int main()
 {
-	::fast_io::string_view stvw("hello \0world\n");
-	::fast_io::io::println(stvw,
+	::ufio::string_view stvw("hello \0world\n");
+	::ufio::io::println(stvw,
 						   stvw == "hello world\n", "\n",
 						   "hello world\n" == stvw, "\n",
 						   stvw <=> "hello world\n", "\n",

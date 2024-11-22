@@ -1,20 +1,20 @@
 ﻿#include <algorithm>
 #include <ranges>
 #include <string>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	::fast_io::vector<::std::size_t> vec;
+	::ufio::vector<::std::size_t> vec;
 	vec.push_back(4);
 	vec.emplace_index(0,6);
 	vec.emplace_index(0,8);
 	vec.erase_index(0);
 	for(auto const & e : vec)
 	{
-		::fast_io::io::println(e);
+		::ufio::io::println(e);
 	}
 }

@@ -1,9 +1,9 @@
 ﻿#include <cstdio>
-#include <fast_io_core.h>
+#include <ufio_core.h>
 
 int main()
 {
 	printf("nt_get_current_peb():%p\nRtlGetCurrentPeb():%p\n",
-		   ::fast_io::win32::nt::nt_get_current_peb(),
-		   ::fast_io::win32::nt::RtlGetCurrentPeb());
+		   ::ufio::win32::nt::nt_get_current_peb(),
+		   ::ufio::win32::nt::RtlGetCurrentPeb());
 }

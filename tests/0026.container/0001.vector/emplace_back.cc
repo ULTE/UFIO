@@ -1,9 +1,9 @@
 ﻿#include <cassert>
 #include <string>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 struct President
 {
@@ -28,12 +28,12 @@ struct President
 
 int main()
 {
-	fast_io::vector<President> elections;
+	ufio::vector<President> elections;
 	print("emplace_back:\n");
 	auto &ref = elections.emplace_back("Nelson Mandela", "South Africa", 1994);
 	assert(ref.year == 1994 && "uses a reference to the created object (C++17)");
 
-	fast_io::vector<President> reElections;
+	ufio::vector<President> reElections;
 	print("\npush_back:\n");
 	reElections.push_back(President("Franklin Delano Roosevelt", "the USA", 1936));
 

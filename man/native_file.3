@@ -1,11 +1,11 @@
-.\" Manpage for fast_io::concat
+.\" Manpage for ufio::concat
 .\" Contact euloanty@live.com or pssvv4@gmail.com to correct errors of typos
-.TH CONCAT 3 2020-11-20 "fast_io" "C++ Programmer's Manual"
+.TH CONCAT 3 2020-11-20 "ufio" "C++ Programmer's Manual"
 .SH "NAME"
 native_file, inative_file, onative_file, u8native_file, u8inative_file, u8onative_file, wnative_file, winative_file, wonative_file - native file file observer.
 .SH "SYNOPSIS"
 .nf
-.B #include <fast_io_device.h>
+.B #include <ufio_device.h>
 .PP
 .BI "using native_file =   /* Depending on platform*/ "
 .BI "using inative_file = input_file_wrapper<native_file>;"
@@ -36,9 +36,9 @@ native_file is an alias of current platform native file. Depending on your platf
 or
 .BR posix_file
 .PP
-An inative_file is equal to native_file with open mode fast_io::open_mode::in
+An inative_file is equal to native_file with open mode ufio::open_mode::in
 .PP
-A onative_file is equal to native_file with open mode fast_io::open_mode::out
+A onative_file is equal to native_file with open mode ufio::open_mode::out
 .PP
 .SH RETURN VALUE
 .BR native_file
@@ -55,7 +55,7 @@ native_file guarantees for thread safety.
 .SH PROCESS SAFETY
 native_file guarantees for process safety.
 .PP
-fast_io also provides thread-safe files: 
+ufio also provides thread-safe files: 
 .BR ibuf_file_mutex ,
 .BR obuf_file_mutex
 and 
@@ -72,13 +72,13 @@ create or open (if such a file already exists) a file "text.txt" and write strin
 .PP
 .in +8n
 .EX
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 
 int main()
 {
 	std::string str("It's a sunny ");
-	fast_io::native_file file("text.txt",  fast_io::open_mode::out | fast_io::open_mode::app);
+	ufio::native_file file("text.txt",  ufio::open_mode::out | ufio::open_mode::app);
 	print(file, str, "day!\en");
 }
 .EE
@@ -88,13 +88,13 @@ Open an existing local file "text.txt" and read one line at a time, until the en
 .PP
 .in +8n
 .EX
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 
 int main()
 {
-	fast_io::native_file file("text.txt", fast_io::open_mode::in);
-	for(std::string str;scan<true>(file, fast_io::line(str)); println(str));
+	ufio::native_file file("text.txt", ufio::open_mode::in);
+	for(std::string str;scan<true>(file, ufio::line(str)); println(str));
 }
 .EE
 .in -8n
@@ -102,12 +102,12 @@ int main()
 Get file status of file "text.txt":
 .in +8n
 .EX
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 
 int main()
 {
-	fast_io::ionative_file nfl("text.txt");
+	ufio::ionative_file nfl("text.txt");
 	auto st{status(nfl)};
 	println("status of text.txt:\en ", st);
 }
@@ -137,6 +137,6 @@ int main()
 .BR native_memory_map_file (3)
 .SH COLOPHON
 This page is part of 2596 version of the
-.I fast_io
+.I ufio
 project.
-Wiki can be found out in https://github.com/expnkx/fast_io/wiki
+Wiki can be found out in https://github.com/expnkx/ufio/wiki

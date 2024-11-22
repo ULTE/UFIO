@@ -1,9 +1,9 @@
 ﻿#include <random>
-#include <fast_io_dsal/vector.h>
+#include <ufio_dsal/vector.h>
 
 inline constexpr auto generate_vals() noexcept
 {
-	::fast_io::freestanding::array<::std::uint_least64_t,
+	::ufio::freestanding::array<::std::uint_least64_t,
 								   ::std::numeric_limits<::std::uint_least64_t>::digits10 + 2>
 		tb;
 	::std::uint_least64_t v{1};
@@ -19,10 +19,10 @@ inline constexpr auto generate_vals() noexcept
 
 inline constexpr std::size_t N{UINT32_C(10000000)};
 
-inline ::fast_io::vector<::std::uint_least64_t> generate_random_data()
+inline ::ufio::vector<::std::uint_least64_t> generate_random_data()
 {
 	constexpr auto tb{generate_vals()};
-	::fast_io::vector<::std::uint_least64_t> vec(N);
+	::ufio::vector<::std::uint_least64_t> vec(N);
 	::std::mt19937_64 eng; // we need deterministic output
 	::std::uniform_int_distribution<::std::size_t> dis(1, tb.size() - 1);
 

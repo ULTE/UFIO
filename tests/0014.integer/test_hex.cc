@@ -1,12 +1,12 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 template <typename U, std::size_t n>
 inline void test_type()
 {
 	print("start\n");
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	U u{};
 	for (std::size_t i{}; i <= n; ++i)
 	{

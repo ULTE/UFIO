@@ -1,15 +1,15 @@
 ﻿#include <cstring>
 #include <string>
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 
-thread_local fast_io::obuf_file obf("/dev/null");
+thread_local ufio::obuf_file obf("/dev/null");
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 extern "C" int LLVMFuzzerTestOneInput(std::uint8_t const *ptr, std::size_t n) noexcept
 {
-	fast_io::
+	ufio::
 #if defined(TEST_INADDR)
 		posix_in_addr
 #elif defined(IPV4)

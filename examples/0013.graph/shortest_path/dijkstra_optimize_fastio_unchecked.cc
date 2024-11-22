@@ -1,8 +1,8 @@
-﻿#include <fast_io_dsal/vector.h>
-#include <fast_io_dsal/priority_queue.h>
-#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
+﻿#include <ufio_dsal/vector.h>
+#include <ufio_dsal/priority_queue.h>
+#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
 
 struct node
 {
@@ -19,15 +19,15 @@ inline constexpr auto operator<=>(node const &a, node const &b) noexcept
 	return a.to <=> b.to;
 }
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	::fast_io::timer timer(u8"dijkstra_optimize_fastio_unchecked");
-	fast_io::ibuf_file ibf("graph.txt");
+	::ufio::timer timer(u8"dijkstra_optimize_fastio_unchecked");
+	ufio::ibuf_file ibf("graph.txt");
 	std::size_t m, n;
 	scan(ibf, m, n);
-	::fast_io::vector<::fast_io::vector<node>> graph(n);
+	::ufio::vector<::ufio::vector<node>> graph(n);
 	std::size_t const average{(m / n + 1) * 13 / 10};
 	for (auto &v : graph)
 	{
@@ -39,8 +39,8 @@ int main()
 		scan(ibf, a, b, w);
 		graph.index_unchecked(a).push_back({b, w});
 	}
-	::fast_io::priority_queue<node, ::std::ranges::greater> queue;
-	::fast_io::vector<std::size_t> relax(n, SIZE_MAX);
+	::ufio::priority_queue<node, ::std::ranges::greater> queue;
+	::ufio::vector<std::size_t> relax(n, SIZE_MAX);
 	for (queue.push({relax.front() = 0, 0}); !queue.is_empty();)
 	{
 		auto [minimum_weight, minimum_node]{queue.pop_element_unchecked()};
@@ -56,7 +56,7 @@ int main()
 			}
 		}
 	}
-	fast_io::obuf_file obf("dijkstra.txt");
+	ufio::obuf_file obf("dijkstra.txt");
 	if (relax.back_unchecked() == SIZE_MAX)
 	{
 		print(obf, "no answer\n");

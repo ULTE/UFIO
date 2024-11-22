@@ -1,5 +1,5 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 #include <queue>
 #include <vector>
 
@@ -8,11 +8,11 @@ struct node
 	std::size_t to, weight;
 };
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::ibuf_file ibf("graph.txt");
+	ufio::ibuf_file ibf("graph.txt");
 	std::size_t m, n;
 	scan(ibf, m, n);
 	std::vector<std::vector<node>> graph(n);
@@ -43,7 +43,7 @@ int main()
 		}
 		occupied[queue.front()] = false;
 	}
-	fast_io::obuf_file obf("spfa.txt");
+	ufio::obuf_file obf("spfa.txt");
 	if (relax.back() == SIZE_MAX)
 	{
 		print(obf, "no answer\n");

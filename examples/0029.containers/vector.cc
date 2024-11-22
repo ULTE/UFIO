@@ -7,17 +7,17 @@ template <typename T>
 using vector = ::std::vector<T>;
 }
 #else
-#include <fast_io_dsal/vector.h>
+#include <ufio_dsal/vector.h>
 
 namespace test
 {
 template <typename T>
-using vector = ::fast_io::vector<T>;
+using vector = ::ufio::vector<T>;
 }
 #endif
 
 /*
-Unfortunately fast_io internally sometimes uses vector despite i try to avoid them. Well then better expose the APIs
+Unfortunately ufio internally sometimes uses vector despite i try to avoid them. Well then better expose the APIs
 */
 
 int main()

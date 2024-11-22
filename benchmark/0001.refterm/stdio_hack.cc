@@ -1,7 +1,7 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 inline void test()
 {
@@ -13,7 +13,7 @@ inline void test()
 
 int main()
 {
-	fast_io::u8obuf_file timer_obf(u"stdio_hack.txt");
-	fast_io::timer t(u8"stdio_hack");
+	ufio::u8obuf_file timer_obf(u"stdio_hack.txt");
+	ufio::timer t(u8"stdio_hack");
 	test();
 }
