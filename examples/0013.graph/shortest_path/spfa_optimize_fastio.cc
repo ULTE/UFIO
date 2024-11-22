@@ -1,23 +1,23 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_dsal/queue.h>
-#include <fast_io_dsal/vector.h>
-#include <fast_io_driver/timer.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_dsal/queue.h>
+#include <ufio_dsal/vector.h>
+#include <ufio_driver/timer.h>
 
 struct node
 {
 	std::size_t to, weight;
 };
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	::fast_io::timer timer(u8"spfa_optimize_fastio");
-	fast_io::ibuf_file ibf("graph.txt");
+	::ufio::timer timer(u8"spfa_optimize_fastio");
+	ufio::ibuf_file ibf("graph.txt");
 	std::size_t m, n;
 	scan(ibf, m, n);
-	::fast_io::vector<::fast_io::vector<node>> graph(n);
+	::ufio::vector<::ufio::vector<node>> graph(n);
 	std::size_t const average{(m / n + 1) * 13 / 10};
 	for (auto &v : graph)
 	{
@@ -29,9 +29,9 @@ int main()
 		scan(ibf, a, b, w);
 		graph[a].push_back({b, w});
 	}
-	::fast_io::vector<std::size_t> relax(n, SIZE_MAX);
-	::fast_io::vector<char8_t> occupied(n);
-	::fast_io::queue<std::size_t> queue;
+	::ufio::vector<std::size_t> relax(n, SIZE_MAX);
+	::ufio::vector<char8_t> occupied(n);
+	::ufio::queue<std::size_t> queue;
 	occupied.front() = true;
 	for (queue.push(relax.front() = 0); !queue.is_empty(); queue.pop())
 	{
@@ -51,7 +51,7 @@ int main()
 		}
 		occupied[front] = false;
 	}
-	fast_io::obuf_file obf("spfa.txt");
+	ufio::obuf_file obf("spfa.txt");
 	if (relax.back() == SIZE_MAX)
 	{
 		print(obf, "no answer\n");

@@ -577,8 +577,8 @@ _Z14sha512_invokerPmPKSt4byteS2_:       # @_Z14sha512_invokerPmPKSt4byteS2_
 	andn	$t3, $t0, $a6
 	and	$ra, $t1, $a6
 	or	$t3, $ra, $t3
-	pcalau12i	$ra, %pc_hi20(_ZN7fast_io7details6sha51210k512scalarE)
-	addi.d	$ra, $ra, %pc_lo12(_ZN7fast_io7details6sha51210k512scalarE)
+	pcalau12i	$ra, %pc_hi20(_ZN7ufio7details6sha51210k512scalarE)
+	addi.d	$ra, $ra, %pc_lo12(_ZN7ufio7details6sha51210k512scalarE)
 	ldx.d	$a0, $ra, $t4
 	st.d	$t4, $sp, 240                   # 8-byte Folded Spill
 	add.d	$a1, $a7, $a1
@@ -1225,11 +1225,11 @@ _Z14sha512_invokerPmPKSt4byteS2_:       # @_Z14sha512_invokerPmPKSt4byteS2_
 .Lfunc_end0:
 	.size	_Z14sha512_invokerPmPKSt4byteS2_, .Lfunc_end0-_Z14sha512_invokerPmPKSt4byteS2_
                                         # -- End function
-	.type	_ZN7fast_io7details6sha51210k512scalarE,@object # @_ZN7fast_io7details6sha51210k512scalarE
-	.section	.rodata._ZN7fast_io7details6sha51210k512scalarE,"aG",@progbits,_ZN7fast_io7details6sha51210k512scalarE,comdat
-	.weak	_ZN7fast_io7details6sha51210k512scalarE
+	.type	_ZN7ufio7details6sha51210k512scalarE,@object # @_ZN7ufio7details6sha51210k512scalarE
+	.section	.rodata._ZN7ufio7details6sha51210k512scalarE,"aG",@progbits,_ZN7ufio7details6sha51210k512scalarE,comdat
+	.weak	_ZN7ufio7details6sha51210k512scalarE
 	.p2align	3, 0x0
-_ZN7fast_io7details6sha51210k512scalarE:
+_ZN7ufio7details6sha51210k512scalarE:
 	.dword	-1973867731355612462            # 0xe49b69c19ef14ad2
 	.dword	-1171420211273849373            # 0xefbe4786384f25e3
 	.dword	1135362057144423861             # 0xfc19dc68b8cd5b5
@@ -1294,7 +1294,7 @@ _ZN7fast_io7details6sha51210k512scalarE:
 	.dword	6448918945643986474             # 0x597f299cfc657e2a
 	.dword	6902733635092675308             # 0x5fcb6fab3ad6faec
 	.dword	7801388544844847127             # 0x6c44198c4a475817
-	.size	_ZN7fast_io7details6sha51210k512scalarE, 512
+	.size	_ZN7ufio7details6sha51210k512scalarE, 512
 
 	.section	".linker-options","e",@llvm_linker_options
 	.ident	"clang version 20.0.0git (git@github.com:trcrsired/llvm-project.git 1ccbabd27406055793ca2fd73a6fd2f0d9474828)"

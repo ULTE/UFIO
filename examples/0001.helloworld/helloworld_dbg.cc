@@ -1,8 +1,8 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	print(fast_io::dbg(), "Hello World remote debugger from fast_io\n"); // it will use remote debugger if you have one.
+	print(ufio::dbg(), "Hello World remote debugger from ufio\n"); // it will use remote debugger if you have one.
 }

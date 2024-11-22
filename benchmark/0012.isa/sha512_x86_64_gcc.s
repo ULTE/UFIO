@@ -614,7 +614,7 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	xorq	%r14, %r11
 	addq	%rbx, %r11
 	addq	%r10, %r11
-	movl	$_ZN7fast_io7details6sha51210k512scalarE, %r10d
+	movl	$_ZN7ufio7details6sha51210k512scalarE, %r10d
 .L3:
 	movq	-112(%rsp), %r14
 	movq	%r14, %r13
@@ -1514,7 +1514,7 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	xorq	%r14, %r11
 	addq	%rbx, %r11
 	addq	%r13, %r11
-	cmpq	$_ZN7fast_io7details6sha51210k512scalarE+512, %r10
+	cmpq	$_ZN7ufio7details6sha51210k512scalarE+512, %r10
 	jne	.L3
 	addq	%rax, 56(%rsp)
 	subq	$-128, -8(%rsp)
@@ -1555,12 +1555,12 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	popq	%r15
 	ret
 	.size	_Z14sha512_invokerPmPKSt4byteS2_, .-_Z14sha512_invokerPmPKSt4byteS2_
-	.weak	_ZN7fast_io7details6sha51210k512scalarE
-	.section	.rodata._ZN7fast_io7details6sha51210k512scalarE,"aG",@progbits,_ZN7fast_io7details6sha51210k512scalarE,comdat
+	.weak	_ZN7ufio7details6sha51210k512scalarE
+	.section	.rodata._ZN7ufio7details6sha51210k512scalarE,"aG",@progbits,_ZN7ufio7details6sha51210k512scalarE,comdat
 	.align 32
-	.type	_ZN7fast_io7details6sha51210k512scalarE, @gnu_unique_object
-	.size	_ZN7fast_io7details6sha51210k512scalarE, 512
-_ZN7fast_io7details6sha51210k512scalarE:
+	.type	_ZN7ufio7details6sha51210k512scalarE, @gnu_unique_object
+	.size	_ZN7ufio7details6sha51210k512scalarE, 512
+_ZN7ufio7details6sha51210k512scalarE:
 	.quad	-1973867731355612462
 	.quad	-1171420211273849373
 	.quad	1135362057144423861

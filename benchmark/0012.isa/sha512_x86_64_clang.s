@@ -626,7 +626,7 @@ _Z14sha512_invokerPmPKSt4byteS2_:       # @_Z14sha512_invokerPmPKSt4byteS2_
 	movq	%r13, %r12
 	addq	%rsi, %r10
 	movq	%r10, %r9
-	leaq	_ZN7fast_io7details6sha51210k512scalarE(%rip), %rdx
+	leaq	_ZN7ufio7details6sha51210k512scalarE(%rip), %rdx
 	movq	-112(%rsp), %rax                # 8-byte Reload
 	.p2align	4, 0x90
 .LBB0_3:                                #   Parent Loop BB0_2 Depth=1
@@ -1609,7 +1609,7 @@ _Z14sha512_invokerPmPKSt4byteS2_:       # @_Z14sha512_invokerPmPKSt4byteS2_
 	movq	%rcx, -96(%rsp)                 # 8-byte Spill
 	subq	$-128, %rdi
 	movq	(%rsp), %rcx                    # 8-byte Reload
-	leaq	_ZN7fast_io7details6sha51210k512scalarE+512(%rip), %rsi
+	leaq	_ZN7ufio7details6sha51210k512scalarE+512(%rip), %rsi
 	movq	%rdi, %rdx
 	cmpq	%rsi, %rdi
 	jne	.LBB0_3
@@ -1657,11 +1657,11 @@ _Z14sha512_invokerPmPKSt4byteS2_:       # @_Z14sha512_invokerPmPKSt4byteS2_
 .Lfunc_end0:
 	.size	_Z14sha512_invokerPmPKSt4byteS2_, .Lfunc_end0-_Z14sha512_invokerPmPKSt4byteS2_
                                         # -- End function
-	.type	_ZN7fast_io7details6sha51210k512scalarE,@object # @_ZN7fast_io7details6sha51210k512scalarE
-	.section	.rodata._ZN7fast_io7details6sha51210k512scalarE,"aG",@progbits,_ZN7fast_io7details6sha51210k512scalarE,comdat
-	.weak	_ZN7fast_io7details6sha51210k512scalarE
+	.type	_ZN7ufio7details6sha51210k512scalarE,@object # @_ZN7ufio7details6sha51210k512scalarE
+	.section	.rodata._ZN7ufio7details6sha51210k512scalarE,"aG",@progbits,_ZN7ufio7details6sha51210k512scalarE,comdat
+	.weak	_ZN7ufio7details6sha51210k512scalarE
 	.p2align	3
-_ZN7fast_io7details6sha51210k512scalarE:
+_ZN7ufio7details6sha51210k512scalarE:
 	.quad	-1973867731355612462            # 0xe49b69c19ef14ad2
 	.quad	-1171420211273849373            # 0xefbe4786384f25e3
 	.quad	1135362057144423861             # 0xfc19dc68b8cd5b5
@@ -1726,9 +1726,9 @@ _ZN7fast_io7details6sha51210k512scalarE:
 	.quad	6448918945643986474             # 0x597f299cfc657e2a
 	.quad	6902733635092675308             # 0x5fcb6fab3ad6faec
 	.quad	7801388544844847127             # 0x6c44198c4a475817
-	.size	_ZN7fast_io7details6sha51210k512scalarE, 512
+	.size	_ZN7ufio7details6sha51210k512scalarE, 512
 
 	.section	".linker-options","e",@llvm_linker_options
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
-	.addrsig_sym _ZN7fast_io7details6sha51210k512scalarE
+	.addrsig_sym _ZN7ufio7details6sha51210k512scalarE

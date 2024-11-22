@@ -1,10 +1,10 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
 int main()
 {
-	::fast_io::u8iobuf_io_file file(::fast_io::io_cookie_type<::fast_io::u8native_file>, u8"io_file.txt", ::fast_io::open_mode::out);
+	::ufio::u8iobuf_io_file file(::ufio::io_cookie_type<::ufio::u8native_file>, u8"io_file.txt", ::ufio::open_mode::out);
 
-	using namespace ::fast_io::io;
+	using namespace ::ufio::io;
 
 	print(file, u8"Hello World\n", u8"14214", u8"\nHello World\n", u8"asfasfs");
 	print(file, u8"Hello World\n", u8"14214", u8"\nHello World\n");

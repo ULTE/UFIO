@@ -1,28 +1,28 @@
 ﻿#include <string>
-#include <fast_io.h>
+#include <ufio.h>
 #include <climits>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	print(fast_io::concat(stdout), "\n",
-		  fast_io::concatln(stdout),
-		  fast_io::concatln(nullptr),
-		  fast_io::concatln(true),
-		  fast_io::concatln(fast_io::mnp::boolalpha(true)),
-		  fast_io::concatln(0),
-		  fast_io::concatln(1000),
-		  fast_io::concatln(-1000),
-		  fast_io::concatln(-1000LL),
-		  fast_io::concatln(SIZE_MAX),
-		  fast_io::concatln(PTRDIFF_MAX),
-		  fast_io::concatln(PTRDIFF_MIN),
-		  fast_io::concatln(UINTMAX_MAX),
-		  fast_io::concatln(INTMAX_MIN),
-		  fast_io::concatln(fast_io::mnp::base<36>(INTMAX_MIN)),
-		  fast_io::concatln(fast_io::mnp::base<36>(INTMAX_MAX)),
-		  fast_io::concatln(fast_io::mnp::base<36, true, true>(INTMAX_MAX)),
-		  fast_io::concatln(fast_io::mnp::base<36, true, true>(INTMAX_MAX / 100)),
-		  fast_io::concatln(fast_io::mnp::base<36, true, true>(INTMAX_MIN / 100)));
+	print(ufio::concat(stdout), "\n",
+		  ufio::concatln(stdout),
+		  ufio::concatln(nullptr),
+		  ufio::concatln(true),
+		  ufio::concatln(ufio::mnp::boolalpha(true)),
+		  ufio::concatln(0),
+		  ufio::concatln(1000),
+		  ufio::concatln(-1000),
+		  ufio::concatln(-1000LL),
+		  ufio::concatln(SIZE_MAX),
+		  ufio::concatln(PTRDIFF_MAX),
+		  ufio::concatln(PTRDIFF_MIN),
+		  ufio::concatln(UINTMAX_MAX),
+		  ufio::concatln(INTMAX_MIN),
+		  ufio::concatln(ufio::mnp::base<36>(INTMAX_MIN)),
+		  ufio::concatln(ufio::mnp::base<36>(INTMAX_MAX)),
+		  ufio::concatln(ufio::mnp::base<36, true, true>(INTMAX_MAX)),
+		  ufio::concatln(ufio::mnp::base<36, true, true>(INTMAX_MAX / 100)),
+		  ufio::concatln(ufio::mnp::base<36, true, true>(INTMAX_MIN / 100)));
 }

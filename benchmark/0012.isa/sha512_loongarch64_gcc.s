@@ -551,7 +551,7 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	add.d	$r13,$r13,$r20
 	add.d	$r18,$r18,$r20
 	st.d	$r30,$r3,112
-	la.local	$r20,_ZN7fast_io7details6sha51210k512scalarE+128
+	la.local	$r20,_ZN7ufio7details6sha51210k512scalarE+128
 .L3:
 	ld.d	$r31,$r3,24
 	rotri.d	$r30,$r5,19
@@ -1175,7 +1175,7 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	add.d	$r18,$r18,$r28
 	add.d	$r13,$r13,$r19
 	add.d	$r18,$r18,$r19
-	la.local	$r19,_ZN7fast_io7details6sha51210k512scalarE+640
+	la.local	$r19,_ZN7ufio7details6sha51210k512scalarE+640
 	bne	$r19,$r20,.L3
 	ld.d	$r30,$r3,112
 	ld.d	$r31,$r3,104
@@ -1243,12 +1243,12 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	.cfi_endproc
 .LFE3169:
 	.size	_Z14sha512_invokerPmPKSt4byteS2_, .-_Z14sha512_invokerPmPKSt4byteS2_
-	.weak	_ZN7fast_io7details6sha51210k512scalarE
-	.section	.rodata._ZN7fast_io7details6sha51210k512scalarE,"aG",@progbits,_ZN7fast_io7details6sha51210k512scalarE,comdat
+	.weak	_ZN7ufio7details6sha51210k512scalarE
+	.section	.rodata._ZN7ufio7details6sha51210k512scalarE,"aG",@progbits,_ZN7ufio7details6sha51210k512scalarE,comdat
 	.align	3
-	.type	_ZN7fast_io7details6sha51210k512scalarE, @object
-	.size	_ZN7fast_io7details6sha51210k512scalarE, 512
-_ZN7fast_io7details6sha51210k512scalarE:
+	.type	_ZN7ufio7details6sha51210k512scalarE, @object
+	.size	_ZN7ufio7details6sha51210k512scalarE, 512
+_ZN7ufio7details6sha51210k512scalarE:
 	.dword	-1973867731355612462
 	.dword	-1171420211273849373
 	.dword	1135362057144423861

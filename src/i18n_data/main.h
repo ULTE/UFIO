@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <type_traits>
-namespace fast_io_i18n
+namespace ufio_i18n
 {
 
 template <typename char_type1, std::size_t n1, typename char_type2, std::size_t n2>
@@ -45,8 +45,8 @@ extern "C"
 #endif
 		= lc_all const *;
 	lc_all_ptr ptr;
-#if defined(FAST_IO_LOCALE_u8ENCODING)
-	if constexpr (compile_time_compare(FAST_IO_LOCALE_u8ENCODING, u8"UTF-8"))
+#if defined(UFIO_LOCALE_u8ENCODING)
+	if constexpr (compile_time_compare(UFIO_LOCALE_u8ENCODING, u8"UTF-8"))
 #else
 	if constexpr (compile_time_compare("我", u8"我"))
 #endif
@@ -80,4 +80,4 @@ extern "C"
 	*lc_ptr = {ptr, wptr, &u8lc_all_global, &u16lc_all_global, &u32lc_all_global};
 }
 
-} // namespace fast_io_i18n
+} // namespace ufio_i18n

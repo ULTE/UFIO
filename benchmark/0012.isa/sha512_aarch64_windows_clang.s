@@ -438,8 +438,8 @@ _Z14sha512_invokerPyPKSt4byteS2_:       // @_Z14sha512_invokerPyPKSt4byteS2_
 	and	x27, x16, x28
 	eor	x11, x11, x9, ror #41
 	add	x3, x3, x13
-	adrp	x28, _ZN7fast_io7details6sha51210k512scalarE+64
-	add	x28, x28, :lo12:_ZN7fast_io7details6sha51210k512scalarE+64
+	adrp	x28, _ZN7ufio7details6sha51210k512scalarE+64
+	add	x28, x28, :lo12:_ZN7ufio7details6sha51210k512scalarE+64
 	eor	x14, x14, x12, ror #39
 	add	x11, x3, x11
 	eor	x3, x27, x2
@@ -967,10 +967,10 @@ _Z14sha512_invokerPyPKSt4byteS2_:       // @_Z14sha512_invokerPyPKSt4byteS2_
 	add	sp, sp, #288
 	ret
                                         // -- End function
-	.section	.rdata$_ZN7fast_io7details6sha51210k512scalarE,"dr",discard,_ZN7fast_io7details6sha51210k512scalarE
-	.globl	_ZN7fast_io7details6sha51210k512scalarE // @_ZN7fast_io7details6sha51210k512scalarE
+	.section	.rdata$_ZN7ufio7details6sha51210k512scalarE,"dr",discard,_ZN7ufio7details6sha51210k512scalarE
+	.globl	_ZN7ufio7details6sha51210k512scalarE // @_ZN7ufio7details6sha51210k512scalarE
 	.p2align	3, 0x0
-_ZN7fast_io7details6sha51210k512scalarE:
+_ZN7ufio7details6sha51210k512scalarE:
 	.xword	-1973867731355612462            // 0xe49b69c19ef14ad2
 	.xword	-1171420211273849373            // 0xefbe4786384f25e3
 	.xword	1135362057144423861             // 0xfc19dc68b8cd5b5

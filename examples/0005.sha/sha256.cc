@@ -1,17 +1,17 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_crypto.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_crypto.h>
 
 /*
-fast_io's own implementation. No need to install anything.
+ufio's own implementation. No need to install anything.
 Probably need -march=native to enable sha intrinsics
 */
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	if (argc != 2)
 	{
 		if (argc == 0)
@@ -21,11 +21,11 @@ int main(int argc, char **argv)
 		perr("Usage: ", os_c_str(*argv), " <file>\n");
 		return 1;
 	}
-	auto t0{fast_io::posix_clock_gettime(fast_io::posix_clock_id::realtime)};
-	fast_io::sha256_context ctx;
-	fast_io::ibuf_file ibf(os_c_str(argv[1]));
-	auto transmitted{::fast_io::operations::transmit_bytes_until_eof(as_file(ctx), ibf)};
+	auto t0{ufio::posix_clock_gettime(ufio::posix_clock_id::realtime)};
+	ufio::sha256_context ctx;
+	ufio::ibuf_file ibf(os_c_str(argv[1]));
+	auto transmitted{::ufio::operations::transmit_bytes_until_eof(as_file(ctx), ibf)};
 	ctx.do_final();
 	println(hash_digest(ctx), " *", os_c_str(argv[1]), "\nTransmitted:", transmitted,
-			" bytes\tElapsed Time:", fast_io::posix_clock_gettime(fast_io::posix_clock_id::realtime) - t0);
+			" bytes\tElapsed Time:", ufio::posix_clock_gettime(ufio::posix_clock_id::realtime) - t0);
 }

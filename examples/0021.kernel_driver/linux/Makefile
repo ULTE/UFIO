@@ -1,4 +1,4 @@
-MOD_NAME    := fast_io_module
+MOD_NAME    := ufio_module
 KERNEL      := /lib/modules/$(shell uname -r)/build
 FLAGS       := -Wall
 KMOD_DIR    := $(shell pwd)

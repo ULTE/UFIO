@@ -1,17 +1,17 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 try
 {
-	fast_io::u8ibuf_file ibf(u8"invalid.txt");
+	ufio::u8ibuf_file ibf(u8"invalid.txt");
 	std::size_t s{};
 	scan(ibf, s);
 	println(s);
 }
-catch (fast_io::parse_code code)
+catch (ufio::parse_code code)
 {
 	perrln(code);
 	return 1;

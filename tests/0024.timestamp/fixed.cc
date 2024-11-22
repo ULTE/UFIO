@@ -1,10 +1,10 @@
-﻿#define FAST_IO_SANITIZE_IO_BUFFER
-#include <fast_io.h>
+﻿#define UFIO_SANITIZE_IO_BUFFER
+#include <ufio.h>
 
-inline void test_val(::fast_io::unix_timestamp ts)
+inline void test_val(::ufio::unix_timestamp ts)
 {
-	using namespace ::fast_io::mnp;
-	using namespace ::fast_io::io;
+	using namespace ::ufio::mnp;
+	using namespace ::ufio::io;
 	println("val:", ts, "\n",
 			fixed(ts, 0), "\n",
 			fixed(ts, 1), "\n",
@@ -37,17 +37,17 @@ inline void test_val(::fast_io::unix_timestamp ts)
 int main()
 {
 	test_val({0, 0});
-	test_val({0, ::fast_io::uint_least64_subseconds_per_second - 1u});
-	test_val({0, ::fast_io::uint_least64_subseconds_per_second >> 1u});
-	test_val({0, (::fast_io::uint_least64_subseconds_per_second / 10u) >> 1u});
-	test_val({0, (::fast_io::uint_least64_subseconds_per_second / 100u) >> 1u});
-	test_val({0, (3 * (::fast_io::uint_least64_subseconds_per_second / 100u)) >> 1u});
-	test_val({::std::numeric_limits<::std::int_least64_t>::max(), ::fast_io::uint_least64_subseconds_per_second - 1u});
-	test_val({::std::numeric_limits<::std::int_least64_t>::max(), ::fast_io::uint_least64_subseconds_per_second >> 1u});
-	test_val({::std::numeric_limits<::std::int_least64_t>::max(), (::fast_io::uint_least64_subseconds_per_second / 10u) >> 1u});
-	test_val({::std::numeric_limits<::std::int_least64_t>::min(), ::fast_io::uint_least64_subseconds_per_second - 1u});
-	test_val({::std::numeric_limits<::std::int_least64_t>::min(), ::fast_io::uint_least64_subseconds_per_second >> 1u});
-	test_val({::std::numeric_limits<::std::int_least64_t>::min(), (::fast_io::uint_least64_subseconds_per_second / 10u) >> 1u});
-	test_val({::std::numeric_limits<::std::int_least64_t>::min(), ::fast_io::uint_least64_subseconds_per_second >> 1u});
-	test_val(::fast_io::posix_clock_gettime(::fast_io::posix_clock_id::realtime));
+	test_val({0, ::ufio::uint_least64_subseconds_per_second - 1u});
+	test_val({0, ::ufio::uint_least64_subseconds_per_second >> 1u});
+	test_val({0, (::ufio::uint_least64_subseconds_per_second / 10u) >> 1u});
+	test_val({0, (::ufio::uint_least64_subseconds_per_second / 100u) >> 1u});
+	test_val({0, (3 * (::ufio::uint_least64_subseconds_per_second / 100u)) >> 1u});
+	test_val({::std::numeric_limits<::std::int_least64_t>::max(), ::ufio::uint_least64_subseconds_per_second - 1u});
+	test_val({::std::numeric_limits<::std::int_least64_t>::max(), ::ufio::uint_least64_subseconds_per_second >> 1u});
+	test_val({::std::numeric_limits<::std::int_least64_t>::max(), (::ufio::uint_least64_subseconds_per_second / 10u) >> 1u});
+	test_val({::std::numeric_limits<::std::int_least64_t>::min(), ::ufio::uint_least64_subseconds_per_second - 1u});
+	test_val({::std::numeric_limits<::std::int_least64_t>::min(), ::ufio::uint_least64_subseconds_per_second >> 1u});
+	test_val({::std::numeric_limits<::std::int_least64_t>::min(), (::ufio::uint_least64_subseconds_per_second / 10u) >> 1u});
+	test_val({::std::numeric_limits<::std::int_least64_t>::min(), ::ufio::uint_least64_subseconds_per_second >> 1u});
+	test_val(::ufio::posix_clock_gettime(::ufio::posix_clock_id::realtime));
 }

@@ -1,13 +1,13 @@
 ﻿// This is an emulation on how many times you can keep born a child to be a boy without abortion.
 #include <random>
-#include <fast_io.h>
+#include <ufio.h>
 #include <map>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	if (argc < 2)
 	{
 		if (argc == 0)
@@ -20,10 +20,10 @@ int main(int argc, char **argv)
 	constexpr auto natural_male_to_female_ratio{1.03};
 	constexpr auto total_ratio{natural_male_to_female_ratio + 1.0};
 	constexpr auto male_probability{natural_male_to_female_ratio / total_ratio};
-	fast_io::ibuf_white_hole_engine engine;
+	ufio::ibuf_white_hole_engine engine;
 	std::bernoulli_distribution dis(male_probability);
 
-	::std::uint_least64_t const n{::fast_io::to<::std::uint_least64_t>(os_c_str(argv[1]))};
+	::std::uint_least64_t const n{::ufio::to<::std::uint_least64_t>(os_c_str(argv[1]))};
 	::std::map<std::uint_least64_t, std::uint_least64_t> map;
 	::std::uint_least64_t total_population{};
 	for (::std::uint_least64_t i{}; i != n; ++i)
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 		++map[j];
 		total_population += j;
 	}
-	fast_io::out_buf_type obf(fast_io::out());
+	ufio::out_buf_type obf(ufio::out());
 	for (auto const &e : map)
 	{
 		print(obf, e.first, " ", e.second, " (", percentage_conventional(e.second, n), ")\n");

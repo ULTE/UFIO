@@ -484,7 +484,7 @@ _Z14sha512_invokerPyPKSt4byteS2_:
 	xorq	%rbx, %rsi
 	addq	%rdi, %rsi
 	addq	%r25, %rsi
-	leaq	_ZN7fast_io7details6sha51210k512scalarE(%rip), %r25
+	leaq	_ZN7ufio7details6sha51210k512scalarE(%rip), %r25
 .L3:
 	rorq	$8, %r31, %rdi
 	rorq	$1, %r31, %rbx
@@ -1063,7 +1063,7 @@ _Z14sha512_invokerPyPKSt4byteS2_:
 	xorq	%r14, %rsi
 	addq	%rdi, %rsi
 	addq	%rbx, %rsi
-	leaq	512+_ZN7fast_io7details6sha51210k512scalarE(%rip), %rbx
+	leaq	512+_ZN7ufio7details6sha51210k512scalarE(%rip), %rbx
 	cmpq	%rbx, %r25
 	jne	.L3
 	movq	40(%rsp), %r14
@@ -1102,11 +1102,11 @@ _Z14sha512_invokerPyPKSt4byteS2_:
 	popp	%r15
 	ret
 	.seh_endproc
-	.globl	_ZN7fast_io7details6sha51210k512scalarE
-	.section	.rdata$_ZN7fast_io7details6sha51210k512scalarE,"dr"
+	.globl	_ZN7ufio7details6sha51210k512scalarE
+	.section	.rdata$_ZN7ufio7details6sha51210k512scalarE,"dr"
 	.linkonce same_size
 	.align 32
-_ZN7fast_io7details6sha51210k512scalarE:
+_ZN7ufio7details6sha51210k512scalarE:
 	.quad	-1973867731355612462
 	.quad	-1171420211273849373
 	.quad	1135362057144423861

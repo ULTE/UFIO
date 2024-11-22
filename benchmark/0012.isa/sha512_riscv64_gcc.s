@@ -165,9 +165,9 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	sd	a4,288(sp)
 	sd	a5,296(sp)
 	add	a4,a2,t2
-	lui	a5,%hi(_ZN7fast_io7details6sha51210k512scalarE+512)
+	lui	a5,%hi(_ZN7ufio7details6sha51210k512scalarE+512)
 	sd	a4,304(sp)
-	addi	a5,a5,%lo(_ZN7fast_io7details6sha51210k512scalarE+512)
+	addi	a5,a5,%lo(_ZN7ufio7details6sha51210k512scalarE+512)
 	add	a4,s11,t0
 	sd	a7,96(sp)
 	sd	s0,104(sp)
@@ -886,9 +886,9 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	add	a0,a0,t1
 	add	a3,a0,a5
 	add	a4,a4,a5
-	lui	a5,%hi(_ZN7fast_io7details6sha51210k512scalarE)
+	lui	a5,%hi(_ZN7ufio7details6sha51210k512scalarE)
 	ld	a6,120(sp)
-	addi	a0,a5,%lo(_ZN7fast_io7details6sha51210k512scalarE)
+	addi	a0,a5,%lo(_ZN7ufio7details6sha51210k512scalarE)
 	sd	t2,120(sp)
 	sd	t0,128(sp)
 .L3:
@@ -1931,12 +1931,12 @@ _Z14sha512_invokerPmPKSt4byteS2_:
 	.cfi_endproc
 .LFE3187:
 	.size	_Z14sha512_invokerPmPKSt4byteS2_, .-_Z14sha512_invokerPmPKSt4byteS2_
-	.weak	_ZN7fast_io7details6sha51210k512scalarE
-	.section	.rodata._ZN7fast_io7details6sha51210k512scalarE,"aG",@progbits,_ZN7fast_io7details6sha51210k512scalarE,comdat
+	.weak	_ZN7ufio7details6sha51210k512scalarE
+	.section	.rodata._ZN7ufio7details6sha51210k512scalarE,"aG",@progbits,_ZN7ufio7details6sha51210k512scalarE,comdat
 	.align	3
-	.type	_ZN7fast_io7details6sha51210k512scalarE, @object
-	.size	_ZN7fast_io7details6sha51210k512scalarE, 512
-_ZN7fast_io7details6sha51210k512scalarE:
+	.type	_ZN7ufio7details6sha51210k512scalarE, @object
+	.size	_ZN7ufio7details6sha51210k512scalarE, 512
+_ZN7ufio7details6sha51210k512scalarE:
 	.dword	-1973867731355612462
 	.dword	-1171420211273849373
 	.dword	1135362057144423861

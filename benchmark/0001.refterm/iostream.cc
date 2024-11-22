@@ -1,8 +1,8 @@
-﻿#include <fast_io.h>
-#include <fast_io_driver/timer.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_driver/timer.h>
+#include <ufio_device.h>
 #include <iostream>
-using namespace fast_io::io;
+using namespace ufio::io;
 
 inline void test()
 {
@@ -15,7 +15,7 @@ inline void test()
 int main()
 {
 	std::ios::sync_with_stdio(false);
-	fast_io::u8obuf_file timer_obf(u"iostream.txt");
-	fast_io::timer t(u8"iostream");
+	ufio::u8obuf_file timer_obf(u"iostream.txt");
+	ufio::timer t(u8"iostream");
 	test();
 }

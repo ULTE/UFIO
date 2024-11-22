@@ -1,8 +1,8 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
 int main()
 {
-	fast_io::obuf_file obf(u8"obf.txt");
+	ufio::obuf_file obf(u8"obf.txt");
 	print(obf, "Hello World\n");
 }

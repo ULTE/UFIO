@@ -1,12 +1,12 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
 int main()
 {
-	::fast_io::u8iobuf_io_file file(::fast_io::io_place_type<::fast_io::u8native_file>, u8"io_file_deco.txt", ::fast_io::open_mode::out);
+	::ufio::u8iobuf_io_file file(::ufio::io_place_type<::ufio::u8native_file>, u8"io_file_deco.txt", ::ufio::open_mode::out);
 
-	::fast_io::operations::add_io_decos(file, ::fast_io::decorators::u8lf_crlf{});
+	::ufio::operations::add_io_decos(file, ::ufio::decorators::u8lf_crlf{});
 
-	using namespace ::fast_io::io;
+	using namespace ::ufio::io;
 
 	print(file, u8"Hello World\n", u8"14214", u8"\nHello World\n", u8"asfasfs");
 	print(file, u8"Hello World\n", u8"14214", u8"\nHello World\n");

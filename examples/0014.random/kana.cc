@@ -1,10 +1,10 @@
 ﻿#include <string>
-#include <fast_io.h>
+#include <ufio.h>
 #include <random>
 #include <array>
 #include <string_view>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
@@ -89,7 +89,7 @@ int main()
 	static_assert(hiragana_size == katakana.size());
 	static_assert(hiragana_size == romaji.size());
 	static_assert(hiragana_size == ipa.size());
-	fast_io::ibuf_white_hole_engine engine;
+	ufio::ibuf_white_hole_engine engine;
 	std::uniform_int_distribution<std::size_t> dis(0, total_kanas - 1);
 	::std::uint_least64_t rounds{};
 	::std::uint_least64_t correct_rounds{};
@@ -107,9 +107,9 @@ int main()
 			correct_pos -= hiragana_size;
 			s = katakana[correct_pos];
 		}
-		print(fast_io::u8c_stdout(), rounds, u8"/", correct_rounds, u8": Romaji of ", fast_io::mnp::os_c_str(s),
+		print(ufio::u8c_stdout(), rounds, u8"/", correct_rounds, u8": Romaji of ", ufio::mnp::os_c_str(s),
 			  u8" is??\n");
-		if (!scan<true>(fast_io::u8c_stdin(), buffer))
+		if (!scan<true>(ufio::u8c_stdin(), buffer))
 		{
 			break;
 		}
@@ -119,10 +119,10 @@ int main()
 			++correct_rounds;
 			correct = true;
 		}
-		println(fast_io::u8c_stdout(), fast_io::mnp::cond(correct, u8"Right!", u8"\aWrong!"), u8"\tRomaji: ",
-				fast_io::mnp::os_c_str(romaji[correct_pos]), u8"\tHiragana: ",
-				fast_io::mnp::os_c_str(hiragana[correct_pos]), u8"\tKatakana: ",
-				fast_io::mnp::os_c_str(katakana[correct_pos]), u8"\tIPA: ", fast_io::mnp::os_c_str(ipa[correct_pos]));
+		println(ufio::u8c_stdout(), ufio::mnp::cond(correct, u8"Right!", u8"\aWrong!"), u8"\tRomaji: ",
+				ufio::mnp::os_c_str(romaji[correct_pos]), u8"\tHiragana: ",
+				ufio::mnp::os_c_str(hiragana[correct_pos]), u8"\tKatakana: ",
+				ufio::mnp::os_c_str(katakana[correct_pos]), u8"\tIPA: ", ufio::mnp::os_c_str(ipa[correct_pos]));
 	}
-	println(fast_io::u8c_stdout(), u8"Total rounds:", rounds, u8"\nCorrect:", correct_rounds);
+	println(ufio::u8c_stdout(), u8"Total rounds:", rounds, u8"\nCorrect:", correct_rounds);
 }

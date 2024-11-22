@@ -1,8 +1,8 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	println(fast_io::native_local_timezone{}());
+	println(ufio::native_local_timezone{}());
 }

@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+﻿#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	fast_io::vector<int> a1{1, 2, 3}, a2{4, 5};
+	ufio::vector<int> a1{1, 2, 3}, a2{4, 5};
 
 	auto it1 = std::next(a1.begin());
 	auto it2 = std::next(a2.begin());

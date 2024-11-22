@@ -1,8 +1,8 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
-fast_io::out_buf_type_lockable globalstdout{fast_io::out()};
+ufio::out_buf_type_lockable globalstdout{ufio::out()};
 
 int main()
 {

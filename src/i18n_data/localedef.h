@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace fast_io_i18n
+namespace ufio_i18n
 {
 
 template <typename T>
@@ -283,4 +283,4 @@ inline constexpr basic_io_scatter_t<char_type> tsc(char_type const (&a)[N]) noex
 	return {a, N - 1};
 }
 
-} // namespace fast_io_i18n
+} // namespace ufio_i18n

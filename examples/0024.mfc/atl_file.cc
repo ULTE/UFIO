@@ -1,12 +1,12 @@
 ﻿#include <string>
 #include <atlfile.h>
-#include <fast_io_driver/mfc.h>
-#include <fast_io.h>
+#include <ufio_driver/mfc.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::atl_file file(u"atl.txt", fast_io::open_mode::out);
+	ufio::atl_file file(u"atl.txt", ufio::open_mode::out);
 	print(file, "Hello World\n");
 }

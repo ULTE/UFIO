@@ -1,4 +1,4 @@
-#include <fast_io.h>
+#include <ufio.h>
 
 int main(int argc, char **argv)
 {
@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		::fast_io::io::perr("Usage: ", fast_io::mnp::os_c_str(*argv), " <oldfile> <newfile>\n");
+		::ufio::io::perr("Usage: ", ufio::mnp::os_c_str(*argv), " <oldfile> <newfile>\n");
 		return 1;
 	}
 
@@ -16,13 +16,13 @@ int main(int argc, char **argv)
 	try
 #endif
 	{
-		::fast_io::native_renameat(::fast_io::at_fdcwd(), fast_io::mnp::os_c_str(argv[1]),
-								   ::fast_io::at_fdcwd(), fast_io::mnp::os_c_str(argv[2]));
+		::ufio::native_renameat(::ufio::at_fdcwd(), ufio::mnp::os_c_str(argv[1]),
+								   ::ufio::at_fdcwd(), ufio::mnp::os_c_str(argv[2]));
 	}
 #if __cpp_exceptions
-	catch (fast_io::error e)
+	catch (ufio::error e)
 	{
-		::fast_io::io::perrln(e);
+		::ufio::io::perrln(e);
 	}
 #endif
 }

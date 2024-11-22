@@ -1,6 +1,6 @@
-﻿#include <fast_io_dsal/vector.h>
+﻿#include <ufio_dsal/vector.h>
 
-#include <fast_io.h>
+#include <ufio.h>
 
 struct metaindex
 {
@@ -9,7 +9,7 @@ struct metaindex
 
 int main()
 {
-	::fast_io::vector<::fast_io::vector<metaindex>> vec;
+	::ufio::vector<::ufio::vector<metaindex>> vec;
 	vec.emplace_back(30);
 
 	auto &vec20{vec[0]};

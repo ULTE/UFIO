@@ -1,7 +1,7 @@
 ﻿#include <bitset>
-#include <fast_io_legacy.h>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+#include <ufio_legacy.h>
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 int main()
 {
@@ -12,8 +12,8 @@ int main()
 			bts("110111100000111111111111111111111111101101111000001111111111111111111111111011011110000011111111111111"
 				"11111111111011011110000011111111111111111111111110");
 	constexpr std::size_t N{1000000UL};
-	fast_io::timer t(u8"filebuf_file");
-	fast_io::filebuf_file fbf(u8"filebuf_file.txt", fast_io::open_mode::out);
+	ufio::timer t(u8"filebuf_file");
+	ufio::filebuf_file fbf(u8"filebuf_file.txt", ufio::open_mode::out);
 	for (std::size_t i{}; i != N; ++i)
 	{
 		println(fbf, bts);

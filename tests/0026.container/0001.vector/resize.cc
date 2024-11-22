@@ -1,16 +1,16 @@
-﻿#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+﻿#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
-void print_info(auto rem, fast_io::vector<int> const &c)
+void print_info(auto rem, ufio::vector<int> const &c)
 {
 	println(os_c_str(rem), rgvw(c, " "));
 }
 
 int main()
 {
-	fast_io::vector<int> c = {1, 2, 3};
+	ufio::vector<int> c = {1, 2, 3};
 	print_info("The vector holds: ", c);
 
 	c.resize(5);

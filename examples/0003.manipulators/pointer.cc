@@ -1,4 +1,4 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 #include <memory>
 
 class dummy_class
@@ -23,13 +23,13 @@ struct C : A, B
 {
 };
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 void foo(){}
 
 int main()
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	int fd{3};
 	int *ptr{::std::addressof(fd)};
 

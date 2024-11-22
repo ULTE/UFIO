@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 inline void test()
 {
-	fast_io::out_buf_type obf{fast_io::out()};
+	ufio::out_buf_type obf{ufio::out()};
 	for (std::size_t i{}; i != 1000000; ++i)
 	{
 		println(obf, i);
@@ -14,7 +14,7 @@ inline void test()
 // STDOUT_HANDLE
 int main()
 {
-	fast_io::u8obuf_file timer_obf(u"out_buf.txt");
-	fast_io::timer t(u8"out_buf");
+	ufio::u8obuf_file timer_obf(u"out_buf.txt");
+	ufio::timer t(u8"out_buf");
 	test();
 }

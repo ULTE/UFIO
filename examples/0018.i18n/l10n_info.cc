@@ -1,15 +1,15 @@
-﻿#include <fast_io.h>
-#include <fast_io_i18n.h>
+﻿#include <ufio.h>
+#include <ufio_i18n.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 try
 {
-	fast_io::native_l10n loc(u8"");
-	println(imbue(loc, fast_io::c_stdout()), loc);
+	ufio::native_l10n loc(u8"");
+	println(imbue(loc, ufio::c_stdout()), loc);
 }
-catch (fast_io::error e)
+catch (ufio::error e)
 {
 	perrln(e);
 	return 1;

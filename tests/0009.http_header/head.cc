@@ -1,14 +1,14 @@
 ﻿#include <string_view>
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 try
 {
-	fast_io::http_header_buffer bf;
-	fast_io::ibuf_file ibf(u8"test.txt");
+	ufio::http_header_buffer bf;
+	ufio::ibuf_file ibf(u8"test.txt");
 	scan(ibf, bf);
 	println("request:", bf.request(), "\n"
 									  "code:",
@@ -20,7 +20,7 @@ try
 		println("key=", key, " value=", value);
 	}
 }
-catch (fast_io::parse_code c)
+catch (ufio::parse_code c)
 {
 	perrln(c);
 }

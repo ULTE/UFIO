@@ -1,11 +1,11 @@
 ﻿#include <string>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::ipv6 v6{{0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF}, 0xFFFF};
-	std::string str = fast_io::concat_std(v6);
-	println(v6, "\n", str, "\n", fast_io::to<fast_io::ipv6>(str));
+	ufio::ipv6 v6{{0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF}, 0xFFFF};
+	std::string str = ufio::concat_std(v6);
+	println(v6, "\n", str, "\n", ufio::to<ufio::ipv6>(str));
 }

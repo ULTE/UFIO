@@ -1,12 +1,12 @@
 ﻿#include <string_view>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
 	std::string_view str;
-	fast_io::ibuffer_view ibv(str);
+	ufio::ibuffer_view ibv(str);
 	std::size_t a;
 	if (scan<true>(ibv, a))
 	{

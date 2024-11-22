@@ -1,10 +1,10 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::obuf_file obf("a.txt");
+	ufio::obuf_file obf("a.txt");
 	println(status(obf.handle));
 }

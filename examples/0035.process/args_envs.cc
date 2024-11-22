@@ -1,4 +1,4 @@
-#include <fast_io.h>
+#include <ufio.h>
 
 int main(int argc, char **argv)
 {
@@ -8,11 +8,11 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		::fast_io::io::perr("Usage: ", ::fast_io::mnp::os_c_str(*argv), " <exe>\n");
+		::ufio::io::perr("Usage: ", ::ufio::mnp::os_c_str(*argv), " <exe>\n");
 		return 1;
 	}
-	::fast_io::native_process p{
-		::fast_io::mnp::os_c_str(argv[1]),
+	::ufio::native_process p{
+		::ufio::mnp::os_c_str(argv[1]),
 		{"char",
 		 L"wchar Double\"quotation\"marks",
 		 u8"u8",
@@ -23,5 +23,5 @@ int main(int argc, char **argv)
 		{},
 		{}};
 	auto ec{wait(p)};
-	::fast_io::io::perrln(::fast_io::mnp::os_c_str(*argv), " -> Exit code: ", static_cast<int>(ec.wait_loc));
+	::ufio::io::perrln(::ufio::mnp::os_c_str(*argv), " -> Exit code: ", static_cast<int>(ec.wait_loc));
 }

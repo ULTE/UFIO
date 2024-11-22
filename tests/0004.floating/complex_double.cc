@@ -1,11 +1,11 @@
 ﻿#include <complex>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	println(std::complex{std::numeric_limits<double>::infinity(), std::numeric_limits<double>::infinity()}, "\n",
 			std::complex{std::numeric_limits<double>::min(), std::numeric_limits<double>::min()}, "\n",
 			std::complex{std::numeric_limits<double>::max(), std::numeric_limits<double>::max()}, "\n",

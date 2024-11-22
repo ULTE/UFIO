@@ -1,18 +1,18 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::net_service service;
-	fast_io::native_socket_file socket(fast_io::tcp_listen(2000));
-	for (fast_io::iobuf_socket_file file;;)
+	ufio::net_service service;
+	ufio::native_socket_file socket(ufio::tcp_listen(2000));
+	for (ufio::iobuf_socket_file file;;)
 	{
 		try
 		{
 			file.reopen(tcp_accept(socket));
-			println(file, utc(fast_io::posix_clock_gettime(fast_io::posix_clock_id::realtime)));
+			println(file, utc(ufio::posix_clock_gettime(ufio::posix_clock_id::realtime)));
 			file.close();
 		}
 		catch (...)

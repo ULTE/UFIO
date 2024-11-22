@@ -1,19 +1,19 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_dsal/array.h>
-#include <fast_io_dsal/string.h>
-#include <fast_io_dsal/string_view.h>
-#include <fast_io_dsal/span.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_dsal/array.h>
+#include <ufio_dsal/string.h>
+#include <ufio_dsal/string_view.h>
+#include <ufio_dsal/span.h>
 
 int main()
 {
-	::fast_io::ibuf_file nf(u8"wsme.txt");
-	::fast_io::array<char, 10> buffer;
-	::fast_io::string str(10);
+	::ufio::ibuf_file nf(u8"wsme.txt");
+	::ufio::array<char, 10> buffer;
+	::ufio::string str(10);
 
-	::fast_io::array<::fast_io::io_scatter_t, 2> scat{::fast_io::io_scatter_t{buffer.data(), buffer.size()}, ::fast_io::io_scatter_t{str.data(), str.size()}};
+	::ufio::array<::ufio::io_scatter_t, 2> scat{::ufio::io_scatter_t{buffer.data(), buffer.size()}, ::ufio::io_scatter_t{str.data(), str.size()}};
 
-	::fast_io::operations::scatter_pread_all_bytes_span(nf, scat, 2);
-	::fast_io::io::println("buffer:", ::fast_io::string_view(::fast_io::freestanding::from_range, buffer),
+	::ufio::operations::scatter_pread_all_bytes_span(nf, scat, 2);
+	::ufio::io::println("buffer:", ::ufio::string_view(::ufio::freestanding::from_range, buffer),
 						   "\nstr:", str);
 }

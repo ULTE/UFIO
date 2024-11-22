@@ -1,10 +1,10 @@
 ﻿#include <algorithm>
 #include <ranges>
 #include <string>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 struct A
 {
@@ -45,7 +45,7 @@ struct A
 
 int main()
 {
-	fast_io::vector<A> container;
+	ufio::vector<A> container;
 	// reserve enough place so vector does not have to resize
 	container.reserve(10);
 	print("construct 2 times A:\n");

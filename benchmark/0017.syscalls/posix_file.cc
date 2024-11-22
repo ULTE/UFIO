@@ -1,12 +1,12 @@
-﻿#include <fast_io.h>
-#include <fast_io_driver/timer.h>
+﻿#include <ufio.h>
+#include <ufio_driver/timer.h>
 
 int main()
 {
-	fast_io::timer tm(u8"posix");
-	::fast_io::posix_file nf(u"posixfile.txt", fast_io::open_mode::out);
+	ufio::timer tm(u8"posix");
+	::ufio::posix_file nf(u"posixfile.txt", ufio::open_mode::out);
 	for (::std::size_t i{}; i != 100000; ++i)
 	{
-		::fast_io::io::print(nf, "Hello World\n", "Hello World\n", "Hello World\n");
+		::ufio::io::print(nf, "Hello World\n", "Hello World\n", "Hello World\n");
 	}
 }

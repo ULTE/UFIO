@@ -7,10 +7,10 @@ ignore = true
 ["iobuf_file_std_format_locale.cc"] # CI doesn't support <format>
 ignore = true
 
-["fast_io_llvm_raw_fd_ostream_file_l10n.cc"] # no llvm env in CI
+["ufio_llvm_raw_fd_ostream_file_l10n.cc"] # no llvm env in CI
 ignore = true
 
-["fast_io_llvm_raw_fd_ostream_file.cc"] # no llvm env in CI
+["ufio_llvm_raw_fd_ostream_file.cc"] # no llvm env in CI
 ignore = true
 
 ["llvm_raw_fd_ostream.cc"] # no llvm env in CI

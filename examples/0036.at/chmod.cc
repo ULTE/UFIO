@@ -1,5 +1,5 @@
-#include <fast_io.h>
-#include <fast_io_dsal/string_view.h>
+#include <ufio.h>
+#include <ufio_dsal/string_view.h>
 
 int main(int argc, char **argv)
 {
@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		::fast_io::io::perr("Usage: ", fast_io::mnp::os_c_str(*argv), " <file> <perms>\n");
+		::ufio::io::perr("Usage: ", ufio::mnp::os_c_str(*argv), " <file> <perms>\n");
 		return 1;
 	}
 
@@ -18,13 +18,13 @@ int main(int argc, char **argv)
 #endif
 	{
 		::std::uint_least32_t perm;
-		::fast_io::scan(::fast_io::mnp::os_c_str(argv[2]), perm);
-		::fast_io::native_fchmodat(::fast_io::at_fdcwd(), fast_io::mnp::os_c_str(argv[1]), static_cast<::fast_io::perms>(perm));
+		::ufio::scan(::ufio::mnp::os_c_str(argv[2]), perm);
+		::ufio::native_fchmodat(::ufio::at_fdcwd(), ufio::mnp::os_c_str(argv[1]), static_cast<::ufio::perms>(perm));
 	}
 #if __cpp_exceptions
-	catch (fast_io::error e)
+	catch (ufio::error e)
 	{
-		::fast_io::io::perrln(e);
+		::ufio::io::perrln(e);
 	}
 #endif
 }

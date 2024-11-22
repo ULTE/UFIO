@@ -1,12 +1,12 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::obuf_file pf(u8"example.txt", fast_io::open_mode::app);
-	fast_io::file_lock_guard g(file_lock(pf), fast_io::flock_request_l64{});
+	ufio::obuf_file pf(u8"example.txt", ufio::open_mode::app);
+	ufio::file_lock_guard g(file_lock(pf), ufio::flock_request_l64{});
 	for (std::size_t i{}; i != 1000000; ++i)
 	{
 		print(pf, "Hello ");

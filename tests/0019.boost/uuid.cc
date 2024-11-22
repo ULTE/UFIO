@@ -1,9 +1,9 @@
-﻿#include <fast_io.h>
-#include <fast_io_driver/boost/uuid.h>
+﻿#include <ufio.h>
+#include <ufio_driver/boost/uuid.h>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {

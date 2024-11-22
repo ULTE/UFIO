@@ -1,5 +1,5 @@
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 
 int main(int argc, char **argv)
 {
@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		::fast_io::io::perr("Usage: ", fast_io::mnp::os_c_str(*argv), " <dirname>\n");
+		::ufio::io::perr("Usage: ", ufio::mnp::os_c_str(*argv), " <dirname>\n");
 		return 1;
 	}
 
@@ -17,12 +17,12 @@ int main(int argc, char **argv)
 	try
 #endif
 	{
-		::fast_io::dir_file d(fast_io::mnp::os_c_str(argv[1]));
+		::ufio::dir_file d(ufio::mnp::os_c_str(argv[1]));
 	}
 #if __cpp_exceptions
-	catch (fast_io::error e)
+	catch (ufio::error e)
 	{
-		::fast_io::io::perrln(e);
+		::ufio::io::perrln(e);
 	}
 #endif
 }
