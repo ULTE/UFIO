@@ -1,10 +1,10 @@
-﻿#include <fast_io.h>
-#include <fast_io_driver/qt.h>
+﻿#include <ufio.h>
+#include <ufio_driver/qt.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::qt_file file("a.txt", fast_io::open_mode::out);
+	ufio::qt_file file("a.txt", ufio::open_mode::out);
 	print(file, "Hello World", 20, " die\n");
 }

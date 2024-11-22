@@ -1,10 +1,10 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	scalar_placement place1 = scalar_placement::left;
 	scalar_placement place2 = scalar_placement::middle;
 	scalar_placement place3 = scalar_placement::right;
@@ -13,10 +13,10 @@ int main()
 			width(place4, "hello", 20), "\n", width(place4, dfvw(4), 20));
 }
 /*
-D:\hg\fast_io\examples\0003.manipulators>g++ -o width_runtime width_runtime.cc -Ofast -std=c++23 -s -flto -march=native
+D:\hg\ufio\examples\0003.manipulators>g++ -o width_runtime width_runtime.cc -Ofast -std=c++23 -s -flto -march=native
 -I../../include
 
-D:\hg\fast_io\examples\0003.manipulators>width_runtime
+D:\hg\ufio\examples\0003.manipulators>width_runtime
 hello
 	   hello
 000000000000000hello

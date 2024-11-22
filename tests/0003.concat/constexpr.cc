@@ -1,10 +1,10 @@
 ﻿#include <string>
-#include <fast_io.h>
+#include <ufio.h>
 #include <cassert>
 
 constexpr bool foo()
 {
-	std::string str{fast_io::concat_std("abcwe")};
+	std::string str{ufio::concat_std("abcwe")};
 	std::string str2{"abcwe"};
 	return str == str2;
 }

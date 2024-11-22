@@ -1,23 +1,23 @@
-﻿#include <fast_io.h>
-#include <fast_io_i18n.h>
-#include <fast_io_legacy.h>
+﻿#include <ufio.h>
+#include <ufio_i18n.h>
+#include <ufio_legacy.h>
 #include <fstream>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
-	fast_io::native_l10n loc(u8"");
+	using namespace ufio::mnp;
+	ufio::native_l10n loc(u8"");
 	std::ofstream fout("ofstream.txt");
-	fast_io::filebuf_io_observer fiob{fout.rdbuf()};
+	ufio::filebuf_io_observer fiob{fout.rdbuf()};
 	println(imbue(loc, fiob), middle(hex0x(420000U), 11, '-'), "\t", addrvw(420000U), "\n",
 			middle(hex0xupper(420000U), 11, '-'), "\t", addrvw(420000U), "\n", middle(base<36, true>(420000U), 12, '-'),
 			"\n", 24124214.64364, "\t", hexfloat(24124214.64364));
 }
 
 /*
-D:\hg\fast_io\examples\0003.manipulators>g++ -v
+D:\hg\ufio\examples\0003.manipulators>g++ -v
 Using built-in specs.
 COLLECT_GCC=g++
 COLLECT_LTO_WRAPPER=d:/x86_64-windows-gnu/x86_64-w64-mingw32/bin/../libexec/gcc/x86_64-w64-mingw32/13.0.0/lto-wrapper.exe
@@ -29,10 +29,10 @@ Configured with: ../../../../gcc/configure --disable-nls --disable-werror --targ
 --host=x86_64-w64-mingw32 Thread model: win32 Supported LTO compression algorithms: zlib gcc version 13.0.0 20220703
 (experimental) (GCC)
 
-D:\hg\fast_io\examples\0003.manipulators>g++ -o 0x2a_0x_imbue_for_fout 0x2a_0x_imbue_for_fout.cc -Ofast -std=c++23 -s
+D:\hg\ufio\examples\0003.manipulators>g++ -o 0x2a_0x_imbue_for_fout 0x2a_0x_imbue_for_fout.cc -Ofast -std=c++23 -s
 -flto -march=native -I../../include
 
-D:\hg\fast_io\examples\0003.manipulators>0x2a_0x_imbue
+D:\hg\ufio\examples\0003.manipulators>0x2a_0x_imbue
 
 ofstream.txt:
 -0x66,8a0--	0x00,066,8a0

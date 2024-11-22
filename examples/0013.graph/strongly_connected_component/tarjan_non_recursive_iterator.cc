@@ -2,8 +2,8 @@
 Referenced from:
 https://www.cnblogs.com/Mr94Kevin/p/9651975.html
 */
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 #include <vector>
 #include <stack>
 
@@ -97,14 +97,14 @@ struct tarjan_ctx
 	}
 };
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
 	tarjan_ctx ctx;
 	std::size_t n;
 	{
-		fast_io::u8ibuf_file ibf(u8"directed_graph.txt");
+		ufio::u8ibuf_file ibf(u8"directed_graph.txt");
 		std::size_t m;
 		scan(ibf, m, n);
 		auto &graph{ctx.graph};
@@ -122,7 +122,7 @@ int main()
 		}
 	}
 	ctx.run();
-	fast_io::u8obuf_file obf(u8"tarjan_non_recursive_iterator.txt");
+	ufio::u8obuf_file obf(u8"tarjan_non_recursive_iterator.txt");
 	auto &component_graph{ctx.component_graph};
 	for (std::size_t i{}, sz{component_graph.size()}; i != sz; ++i)
 	{

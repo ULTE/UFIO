@@ -1,10 +1,10 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	println(left("hello", 20));
 	println(middle("hello", 20));
 	println(right("hello", 20));

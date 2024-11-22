@@ -1,12 +1,12 @@
 ﻿#include <string>
 #include <afx.h>
-#include <fast_io_driver/mfc.h>
-#include <fast_io.h>
+#include <ufio_driver/mfc.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::mfc_file file(u"mfc.txt", fast_io::open_mode::out);
+	ufio::mfc_file file(u"mfc.txt", ufio::open_mode::out);
 	print(file, "Hello World\n");
 }

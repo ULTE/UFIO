@@ -1,6 +1,6 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
@@ -10,11 +10,11 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		perr("Usage: ", fast_io::mnp::os_c_str(*argv), " <file>\n");
+		perr("Usage: ", ufio::mnp::os_c_str(*argv), " <file>\n");
 		return 1;
 	}
-	fast_io::native_file_loader loader({::fast_io::mmap_prot::prot_read, ::fast_io::mmap_flags::map_shared},
-									   ::fast_io::mnp::os_c_str(argv[1]));
+	ufio::native_file_loader loader({::ufio::mmap_prot::prot_read, ::ufio::mmap_flags::map_shared},
+									   ::ufio::mnp::os_c_str(argv[1]));
 	// This will load entire file to memory through allocation.
 	/*
 	This is a contiguous container of the file.

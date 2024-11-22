@@ -1,9 +1,9 @@
-﻿#include <fast_io.h>
-#include <fast_io_driver/timer.h>
+﻿#include <ufio.h>
+#include <ufio_driver/timer.h>
 
 int main()
 {
-	fast_io::timer t(BENCH_VECTOR_COMMENT_STRING);
+	ufio::timer t(BENCH_VECTOR_COMMENT_STRING);
 	for (std::size_t j{}; j != 50; ++j)
 	{
 		test::vector<std::int_least32_t> vec1;

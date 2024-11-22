@@ -1,15 +1,15 @@
-﻿#include <fast_io_dsal/string_view.h>
-#include <fast_io.h>
+﻿#include <ufio_dsal/string_view.h>
+#include <ufio.h>
 
 int main()
 {
-	static_assert(!::std::constructible_from<::fast_io::cstring_view, ::fast_io::string_view>);
-	static_assert(::std::constructible_from<::fast_io::string_view, ::fast_io::cstring_view>);
-	::fast_io::cstring_view e;
-	::fast_io::cstring_view stvw("hello \0worldwoo");
-	::fast_io::string_view msv(stvw);
+	static_assert(!::std::constructible_from<::ufio::cstring_view, ::ufio::string_view>);
+	static_assert(::std::constructible_from<::ufio::string_view, ::ufio::cstring_view>);
+	::ufio::cstring_view e;
+	::ufio::cstring_view stvw("hello \0worldwoo");
+	::ufio::string_view msv(stvw);
 	char buffer[40];
-	::fast_io::io::println(stvw, ::fast_io::mnp::os_c_str(e.c_str()), "\n",
+	::ufio::io::println(stvw, ::ufio::mnp::os_c_str(e.c_str()), "\n",
 						   stvw == msv,
 						   stvw == "hello world\n", "\n",
 						   "hello world\n" == stvw, "\n",
@@ -24,7 +24,7 @@ int main()
 						   stvw.find("\0world"), "\n",
 						   stvw.rfind("wo"), "\n",
 						   stvw.contains("world"), "\n",
-						   ::fast_io::string_view(buffer, stvw.copy(buffer, 6, 2)), "\n",
+						   ::ufio::string_view(buffer, stvw.copy(buffer, 6, 2)), "\n",
 						   stvw.rfind_character('o'), "\n",
 						   stvw.rfind_not_character('o'), "\n",
 						   stvw.compare_three_way(0, 4, "hell", 4));

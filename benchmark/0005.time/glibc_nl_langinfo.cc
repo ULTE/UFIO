@@ -1,9 +1,9 @@
 ﻿#include <clocale>
 #include <langinfo.h>
-#include <fast_io_device.h>
-#include <fast_io.h>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+#include <ufio_device.h>
+#include <ufio.h>
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 int main()
 {
@@ -20,12 +20,12 @@ int main()
 	gmtime_r(__builtin_addressof(t), __builtin_addressof(tm_value));
 	{
 		auto nl_str{nl_langinfo_l(_DATE_FMT, glibc_locale)};
-		fast_io::timer timer(u8"glibc_nl_langinfo");
-		fast_io::obuf_file obf(u8"glibc_nl_langinfo.txt");
+		ufio::timer timer(u8"glibc_nl_langinfo");
+		ufio::obuf_file obf(u8"glibc_nl_langinfo.txt");
 		for (std::size_t i{}; i != N; ++i)
 		{
 			std::size_t diff{strftime_l(buffer, buffer_size, nl_str, __builtin_addressof(tm_value), glibc_locale)};
-			fast_io::operations::write_all(obf, buffer, buffer + diff);
+			ufio::operations::write_all(obf, buffer, buffer + diff);
 			println(obf);
 		}
 	}

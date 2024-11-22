@@ -1,9 +1,9 @@
 ﻿#include <winrt/base.h>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	println(fast_io::wconcat_winrt_hstring(L"qqwdwq", 1234, L"asfasf"));
+	println(ufio::wconcat_winrt_hstring(L"qqwdwq", 1234, L"asfasf"));
 }

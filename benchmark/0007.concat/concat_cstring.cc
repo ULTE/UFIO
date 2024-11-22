@@ -1,19 +1,19 @@
 ﻿#include <atlstr.h>
-#include <fast_io_driver/mfc.h>
-#include <fast_io.h>
-#include <fast_io_driver/timer.h>
-#include <fast_io_device.h>
-using namespace fast_io::io;
+#include <ufio_driver/mfc.h>
+#include <ufio.h>
+#include <ufio_driver/timer.h>
+#include <ufio_device.h>
+using namespace ufio::io;
 
 int main()
 {
 	constexpr std::size_t N(10000000);
 	{
-		fast_io::timer t(u8"concat_cstring");
-		fast_io::obuf_file obf("concat_cstring.txt");
+		ufio::timer t(u8"concat_cstring");
+		ufio::obuf_file obf("concat_cstring.txt");
 		for (std::size_t i{}; i != N; ++i)
 		{
-			print(obf, fast_io::concatln_atl_cstring(i));
+			print(obf, ufio::concatln_atl_cstring(i));
 		}
 	}
 }

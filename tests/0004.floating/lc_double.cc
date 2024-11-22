@@ -1,14 +1,14 @@
 ﻿// should compile with -fsanitize=address -fsanitize=undefined to verify code
-#include <fast_io.h>
-#include <fast_io_i18n.h>
+#include <ufio.h>
+#include <ufio_i18n.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
-	fast_io::native_l10n l10n("");
-	println(imbue(l10n, fast_io::c_stdout()), std::numeric_limits<double>::infinity(), "\n",
+	using namespace ufio::mnp;
+	ufio::native_l10n l10n("");
+	println(imbue(l10n, ufio::c_stdout()), std::numeric_limits<double>::infinity(), "\n",
 			std::numeric_limits<double>::min(), "\n",
 			std::numeric_limits<double>::max(), "\n",
 			fixed(std::numeric_limits<double>::min()), "\n",

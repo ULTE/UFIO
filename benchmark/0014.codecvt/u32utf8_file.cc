@@ -1,15 +1,15 @@
 ﻿#include <string>
-#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 int main()
 {
 	constexpr std::size_t N(1000000);
 	{
-		fast_io::timer t(u8"output");
-		fast_io::u32outf8_file obf(u8"u32utf8_file.txt");
+		ufio::timer t(u8"output");
+		ufio::u32outf8_file obf(u8"u32utf8_file.txt");
 		for (std::size_t i{}; i != N; ++i)
 		{
 			print(obf, U"😀😃😄😁😆😅🤣😂🙂🙃\n");
@@ -17,8 +17,8 @@ int main()
 	}
 	std::u32string buffer;
 	{
-		fast_io::timer t(u8"input");
-		fast_io::u32iutf8_file ibf(u8"u32utf8_file.txt");
+		ufio::timer t(u8"input");
+		ufio::u32iutf8_file ibf(u8"u32utf8_file.txt");
 		for (std::size_t i{}; i != N; ++i)
 		{
 			scan(ibf, buffer);

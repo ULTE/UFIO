@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+﻿#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	fast_io::vector<::std::size_t> vec;
+	ufio::vector<::std::size_t> vec;
 	println("Before vec.push_back(50): vec.size()=",vec.size()," vec.capacity()=",vec.capacity());
 	vec.push_back(50);
 	vec.push_back(50);

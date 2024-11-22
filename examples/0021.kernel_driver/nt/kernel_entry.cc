@@ -1,13 +1,13 @@
-﻿#include <fast_io.h>
-#include <fast_io_driver/nt_kernel.h>
+﻿#include <ufio.h>
+#include <ufio_driver/nt_kernel.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
-extern "C" std::uint32_t DriverEntry(::fast_io::win32::nt::driver_object *driverobject,
-									 ::fast_io::win32::nt::utf16_string *registrypath) noexcept
+extern "C" std::uint32_t DriverEntry(::ufio::win32::nt::driver_object *driverobject,
+									 ::ufio::win32::nt::utf16_string *registrypath) noexcept
 {
-	println(fast_io::u8nt_dbg(), u8"Hello World from fast_io:\ndriverobject:", driverobject, u8" registrypath:",
+	println(ufio::u8nt_dbg(), u8"Hello World from ufio:\ndriverobject:", driverobject, u8" registrypath:",
 			registrypath);
-	println(fast_io::u8nt_dbg(), u8"test floating point:", 241.43643634);
+	println(ufio::u8nt_dbg(), u8"test floating point:", 241.43643634);
 	return 0;
 }

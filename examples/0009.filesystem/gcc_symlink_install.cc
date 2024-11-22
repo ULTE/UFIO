@@ -1,12 +1,12 @@
 ﻿#include <string>
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 #include <string_view>
 #include <vector>
 #include <algorithm>
 #include <ranges>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char const **argv)
 {
@@ -16,16 +16,16 @@ int main(int argc, char const **argv)
 		{
 			return 1;
 		}
-		perr("Usage: ", ::fast_io::mnp::os_c_str(*argv), " <dir path>\n");
+		perr("Usage: ", ::ufio::mnp::os_c_str(*argv), " <dir path>\n");
 		return 1;
 	}
 	std::vector<std::u8string> names;
-	fast_io::dir_file df(::fast_io::mnp::os_c_str(argv[1]));
+	ufio::dir_file df(::ufio::mnp::os_c_str(argv[1]));
 	using namespace std::string_view_literals;
 	for (auto const &ent : current(at(df)))
 	{
 		auto ftype{type(ent)};
-		if (ftype == fast_io::file_type::regular || ftype == fast_io::file_type::symlink)
+		if (ftype == ufio::file_type::regular || ftype == ufio::file_type::symlink)
 		{
 			std::u8string_view view(u8extension(ent));
 			if (view == u8".py"sv) // excluse .py like libstdc++.so.6.0.29-gdb.py

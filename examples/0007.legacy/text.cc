@@ -1,6 +1,6 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
@@ -10,23 +10,23 @@ int main()
 	However, in Windows, LF to CRLF conversion occurs at the file descriptor level, though not at the Win32 or NT level; rather, it involves CRT tricks.
 	It's likely that other operating systems implement this conversion at the FILE* level as well.
 
-	Utilizing fast_io's ibuf_file or obuf_file for LF to CRLF conversion lacks both portability and performance.
+	Utilizing ufio's ibuf_file or obuf_file for LF to CRLF conversion lacks both portability and performance.
 	Instead, it's preferable to leverage the existing FILE* facilities.
 	Concerns regarding performance are unnecessary; I've modified the FILE* implementation across all libc implementations.
 	Note that c_file_unlocked does not lock FILE*.
 	*/
-	fast_io::c_file_unlocked cfl("text.txt", fast_io::open_mode::out |
-												 fast_io::open_mode::text); // add open_mode::text to open_mode flag
-	fast_io::posix_tzset();
-	auto unix_ts{fast_io::posix_clock_gettime(fast_io::posix_clock_id::realtime)};
-	using namespace fast_io::mnp;
+	ufio::c_file_unlocked cfl("text.txt", ufio::open_mode::out |
+												 ufio::open_mode::text); // add open_mode::text to open_mode flag
+	ufio::posix_tzset();
+	auto unix_ts{ufio::posix_clock_gettime(ufio::posix_clock_id::realtime)};
+	using namespace ufio::mnp;
 	println(cfl, "Unix Timestamp:", unix_ts,
 			"\n"
 			"Universe Timestamp:",
-			static_cast<fast_io::universe_timestamp>(unix_ts),
+			static_cast<ufio::universe_timestamp>(unix_ts),
 			"\n"
 			"UTC:",
-			utc(unix_ts), "\n", "Local:", local(unix_ts), " Timezone:", fast_io::timezone_name(), "\n",
+			utc(unix_ts), "\n", "Local:", local(unix_ts), " Timezone:", ufio::timezone_name(), "\n",
 #ifdef __clang__
 			"LLVM clang ", __clang_version__,
 			"\n"
@@ -58,18 +58,18 @@ int main()
 			handlevw(cfl.fp),
 			"\n"
 			"fd:",
-			handlevw(static_cast<fast_io::posix_io_observer>(cfl).fd)
+			handlevw(static_cast<ufio::posix_io_observer>(cfl).fd)
 #ifdef _WIN32
 				,
 			"\n"
 			"win32 HANDLE:",
-			handlevw(static_cast<fast_io::win32_io_observer>(cfl).handle),
+			handlevw(static_cast<ufio::win32_io_observer>(cfl).handle),
 			"\n"
 			"zw HANDLE:",
-			handlevw(static_cast<fast_io::zw_io_observer>(cfl).handle),
+			handlevw(static_cast<ufio::zw_io_observer>(cfl).handle),
 			"\n"
 			"nt HANDLE:",
-			handlevw(static_cast<fast_io::nt_io_observer>(cfl).handle)
+			handlevw(static_cast<ufio::nt_io_observer>(cfl).handle)
 #endif
 	);
 }

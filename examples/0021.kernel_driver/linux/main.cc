@@ -1,15 +1,15 @@
-﻿#include <fast_io.h>
-#include <fast_io_driver/linux_kernel.h>
+﻿#include <ufio.h>
+#include <ufio_driver/linux_kernel.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
-extern "C" int fast_io_dummy_init() noexcept
+extern "C" int ufio_dummy_init() noexcept
 {
-	println(fast_io::u8kpr(), u8"Hello linux kernel from C++ fast_io, i know linus torvalds hates this: ", 20);
+	println(ufio::u8kpr(), u8"Hello linux kernel from C++ ufio, i know linus torvalds hates this: ", 20);
 	return 0;
 }
 
-extern "C" void fast_io_dummy_exit() noexcept
+extern "C" void ufio_dummy_exit() noexcept
 {
-	print(fast_io::u8kpr(), u8"Goodby linux kernel from C++ fast_io\n");
+	print(ufio::u8kpr(), u8"Goodby linux kernel from C++ ufio\n");
 }

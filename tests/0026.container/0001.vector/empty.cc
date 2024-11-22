@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+﻿#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	fast_io::vector<int> numbers;
+	ufio::vector<int> numbers;
 	println("Initially, numbers.empty(): ", boolalpha(numbers.empty()));
 
 	numbers.push_back(42);

@@ -1,11 +1,11 @@
 ﻿#include <string>
-#include <fast_io_legacy.h>
+#include <ufio_legacy.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::filebuf_file fbf(u8"test.txt", fast_io::open_mode::in);
+	ufio::filebuf_file fbf(u8"test.txt", ufio::open_mode::in);
 	std::istream fin(fbf.fb);
 	for (std::string line; std::getline(fin, line); println(line))
 		;

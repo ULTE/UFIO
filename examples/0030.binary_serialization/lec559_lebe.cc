@@ -1,17 +1,17 @@
 ﻿#include <string>
 #include <limits>
 #include <source_location>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 template <typename T>
 inline void test(T u1)
 {
 	T u2;
-	using namespace fast_io::mnp;
-	auto buffer{fast_io::concat_std(iec559_le_put(u1))};
-	scan(fast_io::ibuffer_view{buffer}, iec559_le_get(u2));
+	using namespace ufio::mnp;
+	auto buffer{ufio::concat_std(iec559_le_put(u1))};
+	scan(ufio::ibuffer_view{buffer}, iec559_le_get(u2));
 	println(std::source_location::current(), "\tu1 == u2: ", boolalpha(u1 == u2));
 }
 

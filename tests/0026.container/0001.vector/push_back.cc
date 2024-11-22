@@ -1,12 +1,12 @@
 ﻿#include <string>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	fast_io::vector<std::string> letters;
+	ufio::vector<std::string> letters;
 
 	letters.push_back("abc");
 	std::string s{"def"};

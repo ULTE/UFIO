@@ -1,7 +1,7 @@
-﻿#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+﻿#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 template <typename T>
 void print_info(T const &xs)
@@ -11,7 +11,7 @@ void print_info(T const &xs)
 
 int main()
 {
-	fast_io::vector<int> numbers;
+	ufio::vector<int> numbers;
 
 	print_info(numbers);
 

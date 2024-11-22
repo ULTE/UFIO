@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 #include <string_view>
 #include <array>
 #include <algorithm>
 #include <cstring>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
@@ -15,12 +15,12 @@ int main(int argc, char **argv)
 		{
 			return 1;
 		}
-		perr("Usage: ", ::fast_io::mnp::os_c_str(*argv), " <source directory>\n");
+		perr("Usage: ", ::ufio::mnp::os_c_str(*argv), " <source directory>\n");
 		return 1;
 	}
 	using namespace std::string_view_literals;
 	constexpr std::array<char8_t, 3> utf8bom{0xEF, 0xBB, 0xBF};
-	fast_io::dir_file df(::fast_io::mnp::os_c_str(argv[1]));
+	ufio::dir_file df(::ufio::mnp::os_c_str(argv[1]));
 	for (auto const &ent : recursive(at(df)))
 	{
 		std::u8string_view view(u8extension(ent));
@@ -28,13 +28,13 @@ int main(int argc, char **argv)
 		{
 			continue;
 		}
-		fast_io::allocation_file_loader loader(drt(ent));
+		ufio::allocation_file_loader loader(drt(ent));
 		if (loader.size() >= utf8bom.size() && std::memcmp(loader.data(), utf8bom.data(), 3u) == 0)
 		{
 			continue;
 		}
-		fast_io::obuf_file obf(drt(ent), fast_io::open_mode::out);
-		::fast_io::operations::write_all_range(obf, utf8bom);
+		ufio::obuf_file obf(drt(ent), ufio::open_mode::out);
+		::ufio::operations::write_all_range(obf, utf8bom);
 		print(obf, loader);
 	}
 }

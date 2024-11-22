@@ -1,27 +1,27 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
 #include <vector>
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
 	constexpr std::size_t N(10000000);
 	{
-		fast_io::timer t(u8"output");
-		fast_io::obuf_file obf(u8"iobuf_file_addrvw.txt");
+		ufio::timer t(u8"output");
+		ufio::obuf_file obf(u8"iobuf_file_addrvw.txt");
 		for (std::size_t i{}; i != N; ++i)
 		{
-			println(obf, fast_io::mnp::addrvw(i));
+			println(obf, ufio::mnp::addrvw(i));
 		}
 	}
 	std::vector<std::size_t> vec(N);
 	{
-		fast_io::timer t(u8"input");
-		fast_io::ibuf_file ibf(u8"iobuf_file_addrvw.txt");
+		ufio::timer t(u8"input");
+		ufio::ibuf_file ibf(u8"iobuf_file_addrvw.txt");
 		for (std::size_t i{}; i != N; ++i)
 		{
-			scan(ibf, fast_io::mnp::addrvw_get(vec[i]));
+			scan(ibf, ufio::mnp::addrvw_get(vec[i]));
 		}
 	}
 }

@@ -1,12 +1,12 @@
-﻿#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+﻿#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
 	int sz = 100;
-	fast_io::vector<int> v;
+	ufio::vector<int> v;
 
 	auto cap = v.capacity();
 	println("Initial size: ", v.size(), ", capacity: ", cap);

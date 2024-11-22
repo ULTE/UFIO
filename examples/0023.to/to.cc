@@ -1,12 +1,12 @@
 ﻿#include <cstdint>
-#include <fast_io.h>
+#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
 #ifdef __SIZEOF_INT128__
-	constexpr __uint128_t s{fast_io::to<__uint128_t>("   2424", fast_io::mnp::left(0, 30, '0'),
+	constexpr __uint128_t s{ufio::to<__uint128_t>("   2424", ufio::mnp::left(0, 30, '0'),
 													 " sgdjasdopgjdasgpojadsgpoadjsgpoadsjgopjaghdsoighasdioghadsoi")};
 	println(s);
 #endif

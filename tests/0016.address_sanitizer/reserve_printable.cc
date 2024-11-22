@@ -1,23 +1,23 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
 struct foo
 {
 };
 
-inline constexpr std::size_t print_reserve_size(::fast_io::io_reserve_type_t<char, foo>) noexcept
+inline constexpr std::size_t print_reserve_size(::ufio::io_reserve_type_t<char, foo>) noexcept
 {
 	return 5;
 }
 
-inline constexpr char *print_reserve_define(::fast_io::io_reserve_type_t<char, foo>, char *out, foo f)
+inline constexpr char *print_reserve_define(::ufio::io_reserve_type_t<char, foo>, char *out, foo f)
 {
 	out[7] = 2;
 	return out + 5;
 }
 
-static_assert(fast_io::reserve_printable<char, foo>);
+static_assert(ufio::reserve_printable<char, foo>);
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
@@ -27,5 +27,5 @@ int main()
 }
 
 /*
--fsanitize=address -DFAST_IO_SANITIZE_IO_BUFFER should detect bug here
+-fsanitize=address -DUFIO_SANITIZE_IO_BUFFER should detect bug here
 */

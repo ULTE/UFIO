@@ -1,14 +1,14 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 try
 {
-	fast_io::u8ibuf_file ibf("not_exist.txt");
+	ufio::u8ibuf_file ibf("not_exist.txt");
 }
-catch (fast_io::error e)
+catch (ufio::error e)
 {
 	if (e == std::errc::no_such_file_or_directory)
 	{

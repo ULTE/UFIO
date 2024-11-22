@@ -1,9 +1,9 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
 int main()
 {
-	using namespace ::fast_io::mnp;
-	::fast_io::io::println(
+	using namespace ::ufio::mnp;
+	::ufio::io::println(
 		"UINT64_MAX/0u=", percentage_conventional(UINT64_MAX, 0u), "\n"
 																   "UINT64_MAX/0u=",
 		percentage_conventional<true>(UINT64_MAX, 0u), "\n"

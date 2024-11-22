@@ -1,4 +1,4 @@
-﻿#include <fast_io_hosted.h>
+﻿#include <ufio_hosted.h>
 
 int main()
 {}

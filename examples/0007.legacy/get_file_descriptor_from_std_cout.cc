@@ -1,41 +1,41 @@
 ﻿#include <iostream>
-#include <fast_io_legacy.h>
+#include <ufio_legacy.h>
 
 /*
 C++ iostream is a holy crap. You cannot access FILE* inside std::cout because of the OO garbage.
 See an old blog: https://www.ginac.de/~kreckel/fileno/
 
-Also see wiki in fast_io to understand how C++ std::fstream work. It is implemented by FILE*.
+Also see wiki in ufio to understand how C++ std::fstream work. It is implemented by FILE*.
 So why do you use iostream?? It is just a garbage quality of RAII wrapper for FILE*.
-https://github.com/expnkx/fast_io/wiki/0014.-How-does-std::fstream-work-internally%3F
+https://github.com/expnkx/ufio/wiki/0014.-How-does-std::fstream-work-internally%3F
 */
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::streambuf_io_observer siob{std::cout.rdbuf()};
-	// This is done by hacking C++ standard library implementation in fast_io.
+	ufio::streambuf_io_observer siob{std::cout.rdbuf()};
+	// This is done by hacking C++ standard library implementation in ufio.
 	//  I hacked ALL c++ standard library implementation, including libstdc++, libc++ and MSVC stl
-	using namespace fast_io::mnp;
+	using namespace ufio::mnp;
 	println("std::cout.rdbuf():", handlevw(siob.fb),
 			"\n"
 			"FILE*:",
-			handlevw(static_cast<fast_io::c_io_observer>(siob).fp),
+			handlevw(static_cast<ufio::c_io_observer>(siob).fp),
 			"\n"
 			"fd:",
-			handlevw(static_cast<fast_io::posix_io_observer>(siob).fd)
+			handlevw(static_cast<ufio::posix_io_observer>(siob).fd)
 #if (defined(_WIN32) && !defined(__WINE__)) || defined(__CYGWIN__)
 			// On Windows we can also get its HANDLE
 			,
-			"\nwin32 HANDLE:", handlevw(static_cast<fast_io::win32_io_observer>(siob).handle),
+			"\nwin32 HANDLE:", handlevw(static_cast<ufio::win32_io_observer>(siob).handle),
 			"\n"
 			// Nt HANDLE and win32 HANDLE are the same
 			"nt HANDLE:",
-			handlevw(static_cast<fast_io::nt_io_observer>(siob).handle),
+			handlevw(static_cast<ufio::nt_io_observer>(siob).handle),
 			"\n"
 			"zw HANDLE:",
-			handlevw(static_cast<fast_io::zw_io_observer>(siob).handle)
+			handlevw(static_cast<ufio::zw_io_observer>(siob).handle)
 // Zw and Nt are the same in user mode, but different in kernel mode. See Book: Windows Internal 7th version
 // Or MSDN What Does the Zw Prefix Mean?
 // https://docs.microsoft.com/en-us/windows-hardware/drivers/kernel/what-does-the-zw-prefix-mean
@@ -45,7 +45,7 @@ int main()
 
 /*
 On Windows 10, it works like this
-D:\hg\fast_io\examples\0007.legacy>get_file_descriptor_from_std_cout
+D:\hg\ufio\examples\0007.legacy>get_file_descriptor_from_std_cout
 std::cout.rdbuf():0x00007ff91879baa0
 FILE*:0x00007ff95961fa30
 fd:1

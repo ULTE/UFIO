@@ -1,17 +1,17 @@
 ﻿#include <iterator>
-#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
-void print_info(int id, fast_io::vector<int> const &container)
+void print_info(int id, ufio::vector<int> const &container)
 {
 	perrln(id, ". ", rgvw(container, " "));
 }
 
 int main()
 {
-	fast_io::vector<int> c1(3, 100);
+	ufio::vector<int> c1(3, 100);
 	print_info(1, c1);
 
 	auto it = c1.begin();
@@ -24,7 +24,7 @@ int main()
 	// `it` no longer valid, get a new one:
 	it = c1.begin();
 
-	fast_io::vector<int> c2(2, 400);
+	ufio::vector<int> c2(2, 400);
 	c1.insert(std::next(it, 2), c2.begin(), c2.end());
 	print_info(4, c1);
 

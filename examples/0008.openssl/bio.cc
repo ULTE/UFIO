@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
-#include <fast_io_driver/openssl_driver.h>
+﻿#include <ufio.h>
+#include <ufio_driver/openssl_driver.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::bio_file bf("bio.txt", fast_io::open_mode::out);
-	print(bf, "Hello World to bio from fast_io\n");
+	ufio::bio_file bf("bio.txt", ufio::open_mode::out);
+	print(bf, "Hello World to bio from ufio\n");
 	BIO_printf(bf.bio, "hello %s\n", "world from openssl bio");
 }

@@ -1,23 +1,23 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
 #include <charconv>
 #include <random>
 #include <vector>
 #include <cfloat>
-using namespace fast_io::io;
+using namespace ufio::io;
 
 constexpr int buf_size = 25;
 
-inline void charconv_fast_io(std::vector<double> const &vec)
+inline void charconv_ufio(std::vector<double> const &vec)
 {
-	fast_io::timer t(u8"charconv2");
-	fast_io::obuf_file file{u8"charconv2.txt"};
+	ufio::timer t(u8"charconv2");
+	ufio::obuf_file file{u8"charconv2.txt"};
 	for (auto const e : vec)
 	{
 		char buf[buf_size]{0};
 		std::to_chars(buf, buf + buf_size, e, std::chars_format::scientific);
-		println(file, fast_io::mnp::os_c_str(buf));
+		println(file, ufio::mnp::os_c_str(buf));
 	}
 }
 
@@ -33,5 +33,5 @@ int main()
 	{
 		vec.emplace_back(dis(eng));
 	}
-	charconv_fast_io(vec);
+	charconv_ufio(vec);
 }

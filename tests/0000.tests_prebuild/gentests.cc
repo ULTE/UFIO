@@ -9,9 +9,9 @@
 #include <string_view>
 #include <unordered_map>
 #include <vector>
-#include <fast_io.h>
-#include <fast_io_device.h>
-using namespace fast_io::io;
+#include <ufio.h>
+#include <ufio_device.h>
+using namespace ufio::io;
 
 #undef windows
 #undef linux
@@ -82,21 +82,21 @@ using file_property_t = std::unordered_map<std::u8string, file_entry_t>;
 inline platform_t global_platform;
 inline bool msvc{};
 
-inline void parse_prop_files(fast_io::native_file_loader &&file, file_property_t &file_properties)
+inline void parse_prop_files(ufio::native_file_loader &&file, file_property_t &file_properties)
 {
 	std::unordered_map<std::u8string, std::unordered_map<std::u8string, std::u8string>> file_contents;
 
-	fast_io::u8ibuffer_view u8fv{reinterpret_cast<char8_t *>(file.begin()), reinterpret_cast<char8_t *>(file.end())};
+	ufio::u8ibuffer_view u8fv{reinterpret_cast<char8_t *>(file.begin()), reinterpret_cast<char8_t *>(file.end())};
 	std::unordered_map<std::u8string, std::u8string> *curr_entry{};
-	for (std::u8string line; scan<true>(u8fv, fast_io::mnp::line_get<char8_t>(line));)
+	for (std::u8string line; scan<true>(u8fv, ufio::mnp::line_get<char8_t>(line));)
 	{
 		std::u8string_view linevw{line};
-		linevw = linevw.substr(std::ranges::find_if_not(linevw, fast_io::char_category::is_c_space<char8_t>) - linevw.begin());
+		linevw = linevw.substr(std::ranges::find_if_not(linevw, ufio::char_category::is_c_space<char8_t>) - linevw.begin());
 		linevw = linevw.substr(0, linevw.find_first_of(u8'#'));
 #if defined(__cpp_lib_ranges_find_last) && __cpp_lib_ranges_find_last >= 202207L
-		linevw = linevw.substr(0, std::ranges::find_last_if_not(linevw, fast_io::char_category::is_c_space<char8_t>).begin() - linevw.begin() + 1);
+		linevw = linevw.substr(0, std::ranges::find_last_if_not(linevw, ufio::char_category::is_c_space<char8_t>).begin() - linevw.begin() + 1);
 #else
-		auto rit = std::ranges::find_if_not(linevw.rbegin(), linevw.rend(), fast_io::char_category::is_c_space<char8_t>);
+		auto rit = std::ranges::find_if_not(linevw.rbegin(), linevw.rend(), ufio::char_category::is_c_space<char8_t>);
 		linevw = linevw.substr(0, linevw.rend() - rit);
 #endif
 		if (linevw.empty())
@@ -110,11 +110,11 @@ inline void parse_prop_files(fast_io::native_file_loader &&file, file_property_t
 				panic("invalid property file. unclosed bracket for sections\n");
 			}
 			auto section_name = linevw.substr(1, linevw.size() - 2);
-			section_name = section_name.substr(std::ranges::find_if_not(section_name, fast_io::char_category::is_c_space<char8_t>) - section_name.begin());
+			section_name = section_name.substr(std::ranges::find_if_not(section_name, ufio::char_category::is_c_space<char8_t>) - section_name.begin());
 #if defined(__cpp_lib_ranges_find_last) && __cpp_lib_ranges_find_last >= 202207L
-			section_name = section_name.substr(0, std::ranges::find_last_if_not(section_name, fast_io::char_category::is_c_space<char8_t>).begin() - section_name.begin() + 1);
+			section_name = section_name.substr(0, std::ranges::find_last_if_not(section_name, ufio::char_category::is_c_space<char8_t>).begin() - section_name.begin() + 1);
 #else
-			auto rit = std::ranges::find_if_not(section_name.rbegin(), section_name.rend(), fast_io::char_category::is_c_space<char8_t>);
+			auto rit = std::ranges::find_if_not(section_name.rbegin(), section_name.rend(), ufio::char_category::is_c_space<char8_t>);
 			section_name = section_name.substr(0, section_name.rend() - rit);
 #endif
 			if (section_name.front() == u8'"')
@@ -149,15 +149,15 @@ inline void parse_prop_files(fast_io::native_file_loader &&file, file_property_t
 			}
 			std::u8string_view key{linevw.begin(), linevw.begin() + eq_pos};
 			std::u8string_view value{linevw.begin() + eq_pos + 1, linevw.end()};
-			key = key.substr(std::ranges::find_if_not(key, fast_io::char_category::is_c_space<char8_t>) - key.begin());
-			value = value.substr(std::ranges::find_if_not(value, fast_io::char_category::is_c_space<char8_t>) - value.begin());
+			key = key.substr(std::ranges::find_if_not(key, ufio::char_category::is_c_space<char8_t>) - key.begin());
+			value = value.substr(std::ranges::find_if_not(value, ufio::char_category::is_c_space<char8_t>) - value.begin());
 #if defined(__cpp_lib_ranges_find_last) && __cpp_lib_ranges_find_last >= 202207L
-			key = key.substr(0, std::ranges::find_last_if_not(key, fast_io::char_category::is_c_space<char8_t>).begin() - key.begin() + 1);
-			value = value.substr(0, std::ranges::find_last_if_not(value, fast_io::char_category::is_c_space<char8_t>).begin() - value.begin() + 1);
+			key = key.substr(0, std::ranges::find_last_if_not(key, ufio::char_category::is_c_space<char8_t>).begin() - key.begin() + 1);
+			value = value.substr(0, std::ranges::find_last_if_not(value, ufio::char_category::is_c_space<char8_t>).begin() - value.begin() + 1);
 #else
-			auto ritkey = std::ranges::find_if_not(key.rbegin(), key.rend(), fast_io::char_category::is_c_space<char8_t>);
+			auto ritkey = std::ranges::find_if_not(key.rbegin(), key.rend(), ufio::char_category::is_c_space<char8_t>);
 			key = key.substr(0, key.rend() - ritkey);
-			auto ritvalue = std::ranges::find_if_not(value.rbegin(), value.rend(), fast_io::char_category::is_c_space<char8_t>);
+			auto ritvalue = std::ranges::find_if_not(value.rbegin(), value.rend(), ufio::char_category::is_c_space<char8_t>);
 			value = value.substr(0, value.rend() - ritvalue);
 #endif
 			if (key.front() == u8'"')
@@ -281,16 +281,16 @@ inline void parse_prop_files(fast_io::native_file_loader &&file, file_property_t
 	}
 }
 
-inline bool gen_cmake_file(fast_io::native_io_observer nio, std::u8string_view prefix, file_entry_t prop);
+inline bool gen_cmake_file(ufio::native_io_observer nio, std::u8string_view prefix, file_entry_t prop);
 
-inline void cmake_gen_rec_dir_def(fast_io::u8obuf_file &cmake_file, fast_io::native_io_observer nio, std::u8string_view filename, std::u8string_view prefix, file_entry_t const &prop)
+inline void cmake_gen_rec_dir_def(ufio::u8obuf_file &cmake_file, ufio::native_io_observer nio, std::u8string_view filename, std::u8string_view prefix, file_entry_t const &prop)
 {
 	if (prop.ignore)
 	{
 		return;
 	}
-	std::u8string new_prefix{fast_io::u8concat_std(prefix, filename, u8".")};
-	fast_io::dir_file dir{at(nio), filename};
+	std::u8string new_prefix{ufio::u8concat_std(prefix, filename, u8".")};
+	ufio::dir_file dir{at(nio), filename};
 	if (!gen_cmake_file(dir, new_prefix, prop))
 	{
 		return;
@@ -298,7 +298,7 @@ inline void cmake_gen_rec_dir_def(fast_io::u8obuf_file &cmake_file, fast_io::nat
 	print(cmake_file, u8"include(${CMAKE_CURRENT_LIST_DIR}/", filename, u8"/CMakeLists.txt)\n");
 }
 
-inline void cmake_gen_file_def(fast_io::u8obuf_file &cmake_file, std::u8string_view targetname, auto &&filename, file_entry_t const &prop)
+inline void cmake_gen_file_def(ufio::u8obuf_file &cmake_file, std::u8string_view targetname, auto &&filename, file_entry_t const &prop)
 {
 	if (prop.ignore || prop.will_fail == will_fail_t::compiletime)
 	{
@@ -334,26 +334,26 @@ inline void cmake_gen_file_def(fast_io::u8obuf_file &cmake_file, std::u8string_v
 	// 	print(cmake_file, u8"set_tests_properties(", targetname, u8" PROPERTIES WILL_FAIL TRUE)\n");
 }
 
-inline bool gen_cmake_file(fast_io::native_io_observer nio, std::u8string_view prefix, file_entry_t prop)
+inline bool gen_cmake_file(ufio::native_io_observer nio, std::u8string_view prefix, file_entry_t prop)
 {
 	bool generated{};
-	fast_io::u8obuf_file cmake_file;
+	ufio::u8obuf_file cmake_file;
 	try
 	{
-		cmake_file = std::move(fast_io::u8obuf_file{at(nio), R"(CMakeLists.txt)", fast_io::open_mode::creat | fast_io::open_mode::excl});
+		cmake_file = std::move(ufio::u8obuf_file{at(nio), R"(CMakeLists.txt)", ufio::open_mode::creat | ufio::open_mode::excl});
 	}
-	catch (fast_io::error)
+	catch (ufio::error)
 	{
-		perr(fast_io::u8err(), u8"CMakeLists.txt alreay exists in ", prefix, u8"\n");
+		perr(ufio::u8err(), u8"CMakeLists.txt alreay exists in ", prefix, u8"\n");
 		return true;
 	}
 	file_property_t file_props;
 	try
 	{
-		fast_io::native_file_loader _{at(nio), R"(.test_prop.toml)"};
-		parse_prop_files(fast_io::native_file_loader{at(nio), R"(.test_prop.toml)"}, file_props);
+		ufio::native_file_loader _{at(nio), R"(.test_prop.toml)"};
+		parse_prop_files(ufio::native_file_loader{at(nio), R"(.test_prop.toml)"}, file_props);
 	}
-	catch (fast_io::error)
+	catch (ufio::error)
 	{}
 	for (auto const &entry : current(at(nio)))
 	{
@@ -373,7 +373,7 @@ inline bool gen_cmake_file(fast_io::native_io_observer nio, std::u8string_view p
 		}
 		switch (type(entry))
 		{
-			using enum fast_io::file_type;
+			using enum ufio::file_type;
 		case directory:
 			cmake_gen_rec_dir_def(cmake_file, nio, filename, prefix, curr_prop);
 			generated = true;
@@ -382,7 +382,7 @@ inline bool gen_cmake_file(fast_io::native_io_observer nio, std::u8string_view p
 			std::u8string_view ext{u8extension(entry)};
 			if (ext == u8".cpp" || ext == u8".cc")
 			{
-				cmake_gen_file_def(cmake_file, fast_io::u8concat_std(prefix, u8stem(entry)), filename, curr_prop);
+				cmake_gen_file_def(cmake_file, ufio::u8concat_std(prefix, u8stem(entry)), filename, curr_prop);
 				generated = true;
 			}
 			break;
@@ -400,7 +400,7 @@ int main(int argc, char *argv[])
 		{
 			return 1;
 		}
-		perr("Usage: ", fast_io::mnp::os_c_str(argv[0]), " <TARGET> <COMMAND-LINE-STYLE?>.\n"
+		perr("Usage: ", ufio::mnp::os_c_str(argv[0]), " <TARGET> <COMMAND-LINE-STYLE?>.\n"
 														 "Target name is one of windows, linux or macos.\n"
 														 "Command-line-style(optional) is one of gcc(default) or msvc\n");
 		return 1;
@@ -436,9 +436,9 @@ int main(int argc, char *argv[])
 			panic("Invalid command-line-style. Should be one of gcc or msvc.\n");
 		}
 	}
-	fast_io::dir_file tests_dir{R"(./tests)"};
-	fast_io::dir_file examples_dir{R"(./examples)"};
-	fast_io::dir_file benchmark_dir{R"(./benchmark)"};
+	ufio::dir_file tests_dir{R"(./tests)"};
+	ufio::dir_file examples_dir{R"(./examples)"};
+	ufio::dir_file benchmark_dir{R"(./benchmark)"};
 	gen_cmake_file(tests_dir, u8"tests.", {});
 	gen_cmake_file(examples_dir, u8"examples.", {});
 	gen_cmake_file(benchmark_dir, u8"benchmark.", {});

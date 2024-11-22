@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
-#include <fast_io_dsal/vector.h>
-using namespace fast_io::io;
-using namespace fast_io::mnp;
+﻿#include <ufio.h>
+#include <ufio_dsal/vector.h>
+using namespace ufio::io;
+using namespace ufio::mnp;
 
 int main()
 {
-	fast_io::vector<int> numbers{2, 4, 6, 8};
+	ufio::vector<int> numbers{2, 4, 6, 8};
 
 	print("Second element: ", numbers[1], "\n");
 
@@ -22,7 +22,7 @@ consteval auto sum_of_all_primes_up_to(unsigned N)
 		return 0ULL;
 	}
 
-	fast_io::vector<bool> is_prime(N, true);
+	ufio::vector<bool> is_prime(N, true);
 	is_prime[0] = is_prime[1] = false;
 
 	auto propagate_non_primality = [&](decltype(N) n) {

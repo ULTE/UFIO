@@ -1,6 +1,6 @@
 ﻿#include <string>
-#include <fast_io.h>
-#include <fast_io_dsal/string.h>
+#include <ufio.h>
+#include <ufio_dsal/string.h>
 #include <version>
 #if __has_include(<format>) && !defined(DISABLE_STD_FORMAT_BENCH)
 #include <format>
@@ -16,14 +16,14 @@
 struct benchmark_return
 {
 	std::size_t total_size{};
-	fast_io::unix_timestamp timestamp{};
+	ufio::unix_timestamp timestamp{};
 };
 
 template <typename Func>
 inline benchmark_return benchmark(Func meth)
 {
 	std::size_t total_size{};
-	auto start{fast_io::posix_clock_gettime(fast_io::posix_clock_id::monotonic_raw)};
+	auto start{ufio::posix_clock_gettime(ufio::posix_clock_id::monotonic_raw)};
 	for (std::uint_least16_t r{}; r != 256; ++r)
 	{
 		for (std::uint_least16_t g{}; g != 256; ++g)
@@ -36,7 +36,7 @@ inline benchmark_return benchmark(Func meth)
 			}
 		}
 	}
-	return {total_size, fast_io::posix_clock_gettime(fast_io::posix_clock_id::monotonic_raw) - start};
+	return {total_size, ufio::posix_clock_gettime(ufio::posix_clock_id::monotonic_raw) - start};
 }
 
 #if __cpp_lib_format >= 201907L && !defined(DISABLE_STD_FORMAT_BENCH)
@@ -46,24 +46,24 @@ inline std::string color_format(std::uint_least8_t r, std::uint_least8_t g, std:
 }
 #endif
 
-inline ::fast_io::string color_concat_fast_io(std::uint_least8_t r, std::uint_least8_t g, std::uint_least8_t b)
+inline ::ufio::string color_concat_ufio(std::uint_least8_t r, std::uint_least8_t g, std::uint_least8_t b)
 {
-	return ::fast_io::concat_fast_io("Red: ", r, ", Green: ", g, ", Blue: ", b);
+	return ::ufio::concat_ufio("Red: ", r, ", Green: ", g, ", Blue: ", b);
 }
 
 inline ::std::string color_concat_std(std::uint_least8_t r, std::uint_least8_t g, std::uint_least8_t b)
 {
-	return ::fast_io::concat_std("Red: ", r, ", Green: ", g, ", Blue: ", b);
+	return ::ufio::concat_std("Red: ", r, ", Green: ", g, ", Blue: ", b);
 }
 
-inline ::fast_io::u32string color_u32concat_fast_io(std::uint_least8_t r, std::uint_least8_t g, std::uint_least8_t b)
+inline ::ufio::u32string color_u32concat_ufio(std::uint_least8_t r, std::uint_least8_t g, std::uint_least8_t b)
 {
-	return ::fast_io::u32concat_fast_io(U"Red: ", r, U", Green: ", g, U", Blue: ", b);
+	return ::ufio::u32concat_ufio(U"Red: ", r, U", Green: ", g, U", Blue: ", b);
 }
 
 inline ::std::u32string color_u32concat_std(std::uint_least8_t r, std::uint_least8_t g, std::uint_least8_t b)
 {
-	return ::fast_io::u32concat_std(U"Red: ", r, U", Green: ", g, U", Blue: ", b);
+	return ::ufio::u32concat_std(U"Red: ", r, U", Green: ", g, U", Blue: ", b);
 }
 
 inline std::string color_ostringstream(std::uint_least8_t r, std::uint_least8_t g, std::uint_least8_t b)
@@ -95,9 +95,9 @@ int main()
 #if __cpp_lib_format >= 201907L && !defined(DISABLE_STD_FORMAT_BENCH)
 	auto format_time = benchmark(color_format);
 #endif
-	auto concat_fast_io_time = benchmark(color_concat_fast_io);
+	auto concat_ufio_time = benchmark(color_concat_ufio);
 	auto concat_std_time = benchmark(color_concat_std);
-	auto u32concat_fast_io_time = benchmark(color_u32concat_fast_io);
+	auto u32concat_ufio_time = benchmark(color_u32concat_ufio);
 	auto u32concat_std_time = benchmark(color_u32concat_std);
 #if !defined(DISABLE_OSTRINGSTREAM_BENCH)
 	auto ostringstream_time = benchmark(color_ostringstream);
@@ -108,22 +108,22 @@ int main()
 	auto fmt_format_compile_time = benchmark(color_fmt_format_compile);
 #endif
 #endif
-	using namespace fast_io::io;
+	using namespace ufio::io;
 	print(
 #if __cpp_lib_format >= 201907L && !defined(DISABLE_STD_FORMAT_BENCH)
 		"std::format (total size:", format_time.total_size, ") took ", format_time.timestamp,
 		"s.\n"
 #endif
-		"fast_io::concat_fast_io (total size: ",
-		concat_fast_io_time.total_size, ") took ", concat_fast_io_time.timestamp,
+		"ufio::concat_ufio (total size: ",
+		concat_ufio_time.total_size, ") took ", concat_ufio_time.timestamp,
 		"s.\n"
-		"fast_io::concat_std (total size: ",
+		"ufio::concat_std (total size: ",
 		concat_std_time.total_size, ") took ", concat_std_time.timestamp,
 		"s.\n"
-		"fast_io::u32concat_fast_io (total size: ",
-		u32concat_fast_io_time.total_size, ") took ", u32concat_fast_io_time.timestamp,
+		"ufio::u32concat_ufio (total size: ",
+		u32concat_ufio_time.total_size, ") took ", u32concat_ufio_time.timestamp,
 		"s.\n"
-		"fast_io::u32concat_std (total size: ",
+		"ufio::u32concat_std (total size: ",
 		u32concat_std_time.total_size, ") took ", u32concat_std_time.timestamp,
 		"s.\n"
 #if !defined(DISABLE_OSTRINGSTREAM_BENCH)

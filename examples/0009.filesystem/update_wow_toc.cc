@@ -1,14 +1,14 @@
 ﻿#include <string_view>
-#include <fast_io.h>
-#include <fast_io_device.h>
+#include <ufio.h>
+#include <ufio_device.h>
 #include <algorithm>
 #include <functional>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
-	using namespace ::fast_io::mnp;
+	using namespace ::ufio::mnp;
 	if (argc < 3)
 	{
 		if (argc == 0)
@@ -20,20 +20,20 @@ int main(int argc, char **argv)
 	}
 	std::string_view versionstring{argv[2]};
 	using namespace std::string_view_literals;
-	fast_io::dir_file df(os_c_str(argv[1]));
+	ufio::dir_file df(os_c_str(argv[1]));
 	constexpr ::std::u8string_view vw(u8"## Interface: ");
 	::std::boyer_moore_horspool_searcher searcher(reinterpret_cast<char const *>(vw.data()),
 												  reinterpret_cast<char const *>(vw.data()) + vw.size());
 	for (auto ent : recursive(at(df)))
 	{
-		if (type(ent) != fast_io::file_type::regular)
+		if (type(ent) != ufio::file_type::regular)
 		{
 			continue;
 		}
 		std::u8string_view ext(u8extension(ent));
 		if (ext == u8".toc"sv)
 		{
-			fast_io::allocation_file_loader loader(drt(ent));
+			ufio::allocation_file_loader loader(drt(ent));
 			auto bg{loader.data()};
 			auto ed{loader.data() + loader.size()};
 			auto it{std::search(bg, ed, searcher)};
@@ -47,10 +47,10 @@ int main(int argc, char **argv)
 			}
 			auto itvwsze{it + vw.size()};
 			auto nextn{std::find(itvwsze, ed, u8'\n')};
-			fast_io::obuf_file obf(drt(ent));
-			fast_io::operations::write_all(obf, bg, itvwsze);
+			ufio::obuf_file obf(drt(ent));
+			ufio::operations::write_all(obf, bg, itvwsze);
 			print(obf, versionstring);
-			fast_io::operations::write_all(obf, nextn, ed);
+			ufio::operations::write_all(obf, nextn, ed);
 		}
 	}
 }

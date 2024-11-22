@@ -1,17 +1,17 @@
 ﻿#include <string>
-#include <fast_io.h>
-#include <fast_io_device.h>
-#include <fast_io_driver/timer.h>
+#include <ufio.h>
+#include <ufio_device.h>
+#include <ufio_driver/timer.h>
 #include <vector>
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
 	std::size_t lines{};
 	{
-		fast_io::timer t(u8"input");
-		fast_io::u8ibuf_file ibf(u8"ibuf_white_hole_engine.txt");
-		for (std::u8string str; scan<true>(ibf, fast_io::mnp::line_get(str));)
+		ufio::timer t(u8"input");
+		ufio::u8ibuf_file ibf(u8"ibuf_white_hole_engine.txt");
+		for (std::u8string str; scan<true>(ibf, ufio::mnp::line_get(str));)
 		{
 			++lines;
 		}

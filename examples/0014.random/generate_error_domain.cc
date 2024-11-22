@@ -1,11 +1,11 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 #include <random>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::ibuf_white_hole_engine eng;
+	ufio::ibuf_white_hole_engine eng;
 
 	std::uniform_int_distribution<std::uint16_t> u16distr(0, UINT16_MAX);
 	std::uniform_int_distribution<std::uint32_t> u32distr(0, UINT32_MAX);

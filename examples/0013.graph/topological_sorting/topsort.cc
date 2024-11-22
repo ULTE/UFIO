@@ -1,12 +1,12 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 #include <queue>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	fast_io::u8ibuf_file ibf(u8"directed_graph.txt");
+	ufio::u8ibuf_file ibf(u8"directed_graph.txt");
 	std::size_t m, n;
 	scan(ibf, m, n);
 	std::vector<std::vector<std::size_t>> graph(n);
@@ -23,7 +23,7 @@ int main()
 		graph[a].push_back(b);
 		++indegree[b];
 	}
-	fast_io::u8obuf_file u8obf(u8"topsort.txt");
+	ufio::u8obuf_file u8obf(u8"topsort.txt");
 	std::queue<std::size_t> queue;
 	for (std::size_t i{}; i != n; ++i)
 	{

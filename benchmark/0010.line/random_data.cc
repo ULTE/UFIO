@@ -1,19 +1,19 @@
-﻿#include <fast_io.h>
-#include <fast_io_device.h>
+﻿#include <ufio.h>
+#include <ufio_device.h>
 #include <random>
-#include <fast_io_driver/timer.h>
-using namespace fast_io::io;
+#include <ufio_driver/timer.h>
+using namespace ufio::io;
 
 int main(int argc, char **argv)
 {
 	std::size_t n{100000};
 	if (1 < argc)
 	{
-		n = fast_io::to<std::size_t>(fast_io::mnp::os_c_str(argv[1]));
+		n = ufio::to<std::size_t>(ufio::mnp::os_c_str(argv[1]));
 	}
-	fast_io::timer tm(u8"ibuf_white_hole_engine");
-	fast_io::u8obuf_file obf(u"ibuf_white_hole_engine.txt");
-	fast_io::ibuf_white_hole_engine eng;
+	ufio::timer tm(u8"ibuf_white_hole_engine");
+	ufio::u8obuf_file obf(u"ibuf_white_hole_engine.txt");
+	ufio::ibuf_white_hole_engine eng;
 	std::uniform_int_distribution<std::size_t> ud(0, 61);
 	std::uniform_int_distribution<std::size_t> rlen(10000, 20000);
 	for (std::size_t i{}; i != n; ++i)
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 			{
 				ch = ch - 36u + u8'A';
 			}
-			print(obf, fast_io::mnp::chvw(ch));
+			print(obf, ufio::mnp::chvw(ch));
 		}
 		println(obf);
 	}

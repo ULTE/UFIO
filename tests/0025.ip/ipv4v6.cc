@@ -1,24 +1,24 @@
-﻿#include <fast_io.h>
+﻿#include <ufio.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	constexpr ::fast_io::ipv4 v4{{0xFF, 0xFF, 0xFF, 0xFF}, 0xFFFF};
-	constexpr ::fast_io::ipv6 v6{{0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF}, 0xFFFF};
-	constexpr ::fast_io::ip ip0{::fast_io::ipv6{{0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF}, 0xFFFF}};
+	constexpr ::ufio::ipv4 v4{{0xFF, 0xFF, 0xFF, 0xFF}, 0xFFFF};
+	constexpr ::ufio::ipv6 v6{{0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF}, 0xFFFF};
+	constexpr ::ufio::ip ip0{::ufio::ipv6{{0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF}, 0xFFFF}};
 
-	constexpr ::fast_io::ip ip1{::fast_io::ipv6{{0xFFFF, 0xFFFF, 0, 0, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF}, 0xFFFF}};
+	constexpr ::ufio::ip ip1{::ufio::ipv6{{0xFFFF, 0xFFFF, 0, 0, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF}, 0xFFFF}};
 
-	constexpr ::fast_io::ip ip2{::fast_io::ipv6{{0xFFFF, 0xFFFF, 0, 0, 0, 0xFFFF, 0, 0}, 0xFFFF}};
+	constexpr ::ufio::ip ip2{::ufio::ipv6{{0xFFFF, 0xFFFF, 0, 0, 0, 0xFFFF, 0, 0}, 0xFFFF}};
 
-	constexpr ::fast_io::ip ip3{::fast_io::ipv6{{0xFFFF, 0xFFFF, 0, 0, 0, 0, 0, 0}, 0xFFFF}};
+	constexpr ::ufio::ip ip3{::ufio::ipv6{{0xFFFF, 0xFFFF, 0, 0, 0, 0, 0, 0}, 0xFFFF}};
 
-	constexpr ::fast_io::ip ip4{::fast_io::ipv6{{0, 0, 0, 0, 0xFFFF, 0xFFFF, 0, 0}, 0xFFFF}};
+	constexpr ::ufio::ip ip4{::ufio::ipv6{{0, 0, 0, 0, 0xFFFF, 0xFFFF, 0, 0}, 0xFFFF}};
 
-	constexpr ::fast_io::ip ip5{::fast_io::ipv6{{0, 0, 0, 0, 0, 0, 0xFFFF, 0xFFFF}, 0xFFFF}};
+	constexpr ::ufio::ip ip5{::ufio::ipv6{{0, 0, 0, 0, 0, 0, 0xFFFF, 0xFFFF}, 0xFFFF}};
 
-	constexpr ::fast_io::ip ip6{::fast_io::ipv6{{}, 0xFFFF}};
+	constexpr ::ufio::ip ip6{::ufio::ipv6{{}, 0xFFFF}};
 
 	println("v4:", v4, "\n"
 					   "v6:",

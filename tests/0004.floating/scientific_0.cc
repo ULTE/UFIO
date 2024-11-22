@@ -1,12 +1,12 @@
-﻿#include <fast_io.h>
-#include <fast_io_i18n.h>
+﻿#include <ufio.h>
+#include <ufio_i18n.h>
 
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
-	using namespace fast_io::mnp;
-	fast_io::native_l10n loc("");
+	using namespace ufio::mnp;
+	ufio::native_l10n loc("");
 	constexpr float value{-2.271745e-01f};
 	print("general:\t", value, "\t", comma_general(value), "\n"
 														   "scientific:\t",
@@ -15,12 +15,12 @@ int main()
 		  fixed(value), "\t", comma_fixed(value), "\n"
 												  "hexfloat:\t",
 		  hexfloat(value), "\t", comma_hexfloat(value));
-	println(imbue(loc, fast_io::c_stdout()), "\n\n"
+	println(imbue(loc, ufio::c_stdout()), "\n\n"
 											 "lc:\n"
 											 "general:\t",
 			value, "\n"
 				   "scientific:\t",
-			fast_io::mnp::scientific(value), "\n"
+			ufio::mnp::scientific(value), "\n"
 											 "fixed:  \t",
 			fixed(value), "\n"
 						  "hexfloat:\t",

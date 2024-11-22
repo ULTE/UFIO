@@ -1,11 +1,11 @@
 ﻿#include <clocale>
 #include <langinfo.h>
-#include <fast_io.h>
-#include <fast_io_driver/timer.h>
-#include <fast_io_legacy.h>
+#include <ufio.h>
+#include <ufio_driver/timer.h>
+#include <ufio_legacy.h>
 #include <locale>
 #include <iomanip>
-using namespace fast_io::io;
+using namespace ufio::io;
 
 int main()
 {
@@ -20,8 +20,8 @@ int main()
 	gmtime_r(__builtin_addressof(t), __builtin_addressof(tm_value));
 	{
 		auto nl_str{nl_langinfo_l(_DATE_FMT, glibc_locale)};
-		fast_io::timer timer(u8"std_put_time_nl_langinfo");
-		fast_io::filebuf_file fbf(u8"std_put_time_nl_langinfo.txt", fast_io::open_mode::out);
+		ufio::timer timer(u8"std_put_time_nl_langinfo");
+		ufio::filebuf_file fbf(u8"std_put_time_nl_langinfo.txt", ufio::open_mode::out);
 		std::ostream os(fbf.fb);
 		os.imbue(std::locale(""));
 		for (std::size_t i{}; i != N; ++i)
