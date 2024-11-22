@@ -351,10 +351,10 @@ private:
 		{
 			return fd_devnull;
 		}
-#ifdef __linux__
-		fd_devnull = my_posix_open<true>("/dev/null", O_RDWR | O_CLOEXEC, 0644);
+#ifdef O_CLOEXEC
+		fd_devnull = my_posix_open<true>(reinterpret_cast<char const*>(u8"/dev/null"), O_RDWR | O_CLOEXEC, 0644);
 #else
-		fd_devnull = my_posix_open<true>("/dev/null", O_RDWR, 0644);
+		fd_devnull = my_posix_open<true>(reinterpret_cast<char const*>(u8"/dev/null"), O_RDWR, 0644);
 		sys_fcntl(tmp_fd, F_SETFD, FD_CLOEXEC);
 #endif
 		return fd_devnull;
@@ -362,20 +362,44 @@ private:
 };
 
 // only used in vfork_execveat_common_impl()
-[[noreturn]]
 inline void execveat_inside_vfork(int dirfd, char const *cstr, char const *const *args, char const *const *envp, int volatile &t_errno) noexcept
 {
 #if defined(__linux__) && defined(__NR_execveat)
-	system_call<__NR_execveat, int>(dirfd, cstr, args, envp, AT_SYMLINK_NOFOLLOW);
+	auto ret{system_call<__NR_execveat, int>(dirfd, cstr, args, envp, AT_SYMLINK_NOFOLLOW)};
+	if (::fast_io::linux_system_call_fails(ret))
+	{
+		t_errno = -ret;
+	}
+	else
+	{
+		t_errno = 0;
+	}
+	::fast_io::fast_exit(127);
 #else
 	int fd{noexcept_call(::openat, dirfd, cstr, O_RDONLY | O_NOFOLLOW, 0644)};
 	if (fd != -1) [[likely]]
 	{
 		::ufio::posix::libc_fexecve(fd, const_cast<char *const *>(argv), const_cast<char *const *>(envp));
 	}
-#endif
 	t_errno = errno;
 	noexcept_call(::_exit, 127);
+#endif
+	__builtin_unreachable();
+}
+
+inline pid_t posix_vfork()
+{
+#if defined(__linux__) && defined(__NR_vfork)
+	pid_t pid{system_call<__NR_vfork, pid_t>()};
+	system_call_throw_error(pid);
+#else
+	pid_t pid{noexcept_call(::vfork)};
+	if (pid == -1) [[unlikely]]
+	{
+		throw_posix_error();
+	}
+#endif
+	return pid;
 }
 
 inline pid_t vfork_execveat_common_impl(int dirfd, char const *cstr, char const *const *args, char const *const *envp, posix_process_io const &pio)
@@ -387,11 +411,8 @@ inline pid_t vfork_execveat_common_impl(int dirfd, char const *cstr, char const 
 		fm.map(0, pio.in);
 		fm.map(1, pio.out);
 		fm.map(2, pio.err);
-		pid = noexcept_call(::vfork);
-		if (pid < 0)
-		{
-			throw_posix_error();
-		}
+
+		pid = ::fast_io::details::posix_vfork();
 		if (pid == 0)
 		{
 			execveat_inside_vfork(dirfd, cstr, args, envp, t_errno); // never return
@@ -513,7 +534,11 @@ public:
 	}
 	posix_process &operator=(posix_process &&__restrict other) noexcept
 	{
-		details::posix_waitpid_noexcept(this->pid);
+		if (__builtin_addressof(other) != this)
+		{
+			return *this;
+		}
+		::fast_io::details::posix_waitpid_noexcept(this->pid);
 		this->pid = other.pid;
 		other.pid = -1;
 		return *this;

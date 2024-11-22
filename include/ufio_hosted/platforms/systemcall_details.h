@@ -75,13 +75,12 @@ inline int sys_close(int fd) noexcept
 {
 	return
 #if defined(__linux__) && defined(__NR_close)
-		system_call<__NR_close, int>
+		system_call<__NR_close, int>(fd);
 #elif (defined(_WIN32) && !defined(__BIONIC__)) || defined(__MSDOS__)
-		_close
+		::ufio::noexcept_call(_close, fd);
 #else
-		close
+		::ufio::noexcept_call(close, fd);
 #endif
-		(fd);
 }
 
 inline void sys_close_throw_error(int &fd)
@@ -90,26 +89,29 @@ inline void sys_close_throw_error(int &fd)
 	fd = -1; // POSIX standard says we should never call close(2) again even close syscall fails
 	system_call_throw_error(ret);
 }
-
 #if (!defined(__NEWLIB__) || defined(__CYGWIN__)) && !defined(_WIN32) && __has_include(<dirent.h>) && !defined(_PICOLIBC__)
 
-extern int my_fcntl(int fd, int cmd, ... /* arg */) noexcept
-#if !defined(__MSDOS__)
+namespace posix
+{
+extern int fcntl(int fd, int cmd, ... /* arg */) noexcept
+#if !defined(__MSDOS__) && !defined(__DARWIN_C_LEVEL)
 	__asm__("fcntl")
 #else
 	__asm__("_fcntl")
 #endif
 		;
+} // namespace posix
 
-template <typename T>
-inline int sys_fcntl(int fd, int op, T &&third_arg)
+template <typename... Args>
+	requires(::std::is_scalar_v<Args> && ...)
+inline int sys_fcntl(int fd, int op, Args... args)
 {
 #if defined(__linux__) && defined(__NR_fcntl)
-	int result{system_call<__NR_fcntl, int>(fd, op, ::std::forward<T>(third_arg))};
+	auto result{system_call<__NR_fcntl, int>(fd, op, args...)};
 	system_call_throw_error(result);
 	return result;
 #else
-	auto result{my_fcntl(fd, op, ::std::forward<T>(third_arg))};
+	auto result{posix::fcntl(fd, op, args...)};
 #endif
 	if (result == -1)
 	{
@@ -117,19 +119,6 @@ inline int sys_fcntl(int fd, int op, T &&third_arg)
 	}
 }
 
-inline int sys_fcntl(int fd, int op)
-{
-#if defined(__linux__) && defined(__NR_fcntl)
-	int result{system_call<__NR_fcntl, int>(fd, op)};
-	system_call_throw_error(result);
-	return result;
-#else
-	auto result{my_fcntl(fd, op)};
 #endif
-	if (result == -1)
-	{
-		throw_posix_error();
-	}
-}
-#endif
+
 } // namespace ufio::details
